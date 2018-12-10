@@ -1,0 +1,8 @@
+.navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 10px;
+}
+.navlink-custom {
+  padding-top:.5rem;
+  padding-bottom:.5rem;
+}

@@ -1,0 +1,175 @@
+/* parallex section*/
+#plx {
+    height: 53.125em;
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.wtitle{
+    padding: 50px 20px;
+
+}
+
+.wtitle h3{
+    top:75px;
+    padding-top: 0px;
+    border-top-width: 30px;
+    margin-top: 70px;
+    z-index: 100;
+    height: auto;
+    color:white;
+    background: rgba(204, 204, 204, 0.5);
+
+
+}
+.wtitle h3{
+
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* about us*/
+#aboutsb{
+    height: 700px;
+    background: url("fixedlogo.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.about{
+    padding: 150px 20px;
+
+}
+.content {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    background-color: #343a40;
+}
+
+/*.content h2{*/
+    /*color:whitesmoke;*/
+    /*text-align: center;*/
+    /*font-size: 36px;*/
+    /*z-index: 100;*/
+    /*position: absolute;*/
+    /*top: 2800px;*/
+    /*right:152px;*/
+
+/*}*/
+body{
+    height: 100%;
+}
+#main-card {
+    background-color: #343a40;
+    color: white;
+    width: 50%;
+    height: 25%;
+    /*margin: 6.25em auto 1.563em auto;*/
+
+}
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    color: white;
+}
+.footer{
+    position: sticky;
+}
+
+/* ====== mobile view ====== */
+@media screen and (min-width: 320px) {
+
+    body, html {
+        height: 100%;
+    }
+
+    .row{
+        /*display: flex;*/
+        /*-ms-flex-wrap: wrap;*/
+        /*flex-wrap: wrap;*/
+        /*margin-right: -15px;*/
+        /*margin-left: -15px;*/
+        padding-top: 2em;
+        /*padding-left: 1em;*/
+        padding-bottom: 2em;
+    }
+
+
+}
+@media screen and (min-width: 310px) {
+
+    body, html {
+        height: 100%;
+    }
+    #plx {
+        height: 984px;
+
+    }
+    .row{
+        /*display: flex;*/
+        /*-ms-flex-wrap: wrap;*/
+        /*flex-wrap: wrap;*/
+        /*margin-right: -15px;*/
+        /*margin-left: -15px;*/
+        padding-top: 2em;
+        /*padding-left: 2em;*/
+        padding-bottom: 2em;
+    }
+
+
+
+}
+@media screen and (min-width: 700px) {
+
+    body, html {
+        height: 100%;
+    }
+    .row{
+        /*display: flex;*/
+        /*-ms-flex-wrap: wrap;*/
+        /*flex-wrap: wrap;*/
+        /*margin-right: -15px;*/
+        /*margin-left: -15px;*/
+        padding-top: 2em;
+        /*padding-left: 11em;*/
+    }
+
+
+
+}
+@media screen and (min-width: 1000px) {
+    .row {
+        /*display: flex;*/
+        /*-ms-flex-wrap: wrap;*/
+        /*flex-wrap: wrap;*/
+        padding-top: 17em;
+        /*padding-left: 13em;*/
+        /*margin-right: -15px;*/
+        /*margin-left: -15px;*/
+    }
+    #main-card {
+        background-color: #343a40;
+        color: white;
+        width: 125%;
+        height: 25%;
+        /*margin: 6.25em auto 1.563em auto;*/
+
+    }
+
+}
