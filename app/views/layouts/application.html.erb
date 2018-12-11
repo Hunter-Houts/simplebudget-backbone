@@ -23,7 +23,7 @@
     <div class="navbar-nav mr-auto">
         <a class="nav-item nav-link active navlink-custom" href="/posts" id="posts"><i class="fas fa-clipboard"></i> Community</a>
         <a href="/signup" class="nav-item nav-link active" id="signup"><i class="fas fa-user-plus"></i> Sign Up</a>
-        <a href="/login" class="nav-item nav-link active" id="login"><i class="fas fa-sign-in-alt"></i>  Login</a>
+        <a href="/login" class="nav-item nav-link active" id="login"><i class="fas fa-sign-in-alt"></i> Log in</a>
     </div>
     <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET" style=" padding-left: 12px" >
         <input class="search-custom" type="search" name="search"/>
@@ -47,29 +47,28 @@
 <% end %>
 </nav>
     <%= yield %>
-    <footer style="
+    <footer class="fixed-bottom" style="
    bottom: 0;
    width:100%;
-   height:60px;
+   /*height:60px;*/
    background-color: #343a40;">
-    <div class="container text-center  white" style="background-color: #343a40;">
+    <div class="container-fluid text-center  white">
         <div class="col-12">
-            <a class="link-custom" style="color: #eae0c8;" href='/'>Home </a>
+            <a class="link-custom" style="color: #eae0c8;" th:href="'/'">Home </a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" href='/faq'>FAQ</a>
+            <a class="link-custom" style="color: #eae0c8;" th:href="'/faq'">FAQ</a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" href='/about-team'>The Team</a>
+            <a class="link-custom" style="color: #eae0c8;" th:href="'/about-team'">The Team</a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" href='/supincome'>Supplemental Income</a>
+            <a class="link-custom" style="color: #eae0c8;" th:href="'/supincome'">Supplemental Income</a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" href='/reviews'>Our Reviews</a>
+            <a class="link-custom" style="color: #eae0c8;" th:href="'/reviews'">Our Reviews</a>
 
         </div>
         <div class="col-12 footer-bottom text-center white">
             <em style="color: #eae0c8;" >SimpleBudget Copyright &copy; 2018</em>
         </div>
     </div>
-
-</footer>
+  </footer>
   </body>
 </html>

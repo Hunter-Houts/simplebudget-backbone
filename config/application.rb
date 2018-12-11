@@ -10,6 +10,16 @@ module Simplebudget
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.middleware.insert_before Warden::Manager, Rack::Cors do
+  allow do
+    origins '*' # it's highly recommended to specify the correct origin
+    resource '*',
+        :headers => :any,
+        :methods => [:get, :post, :options], # 'options' is really important
+                                            # for preflight requests
+        :expose  => ['X-CSRF-Token']   #allows usage of token on the front-end
+  end
+end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

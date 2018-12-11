@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
   include ActionController::MimeResponds
-  protect_from_forgery with: :exception, prepend: true
   helper_method :current_user
 
   def current_user
