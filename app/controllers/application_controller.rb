@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ActionController::MimeResponds
+  protect_from_forgery with: :exception, prepend: true
   helper_method :current_user
 
   def current_user
