@@ -7,12 +7,13 @@ class UsersController < ApplicationController
 
   def create
     respond_with User.create(user_params)
-    if User.create(user_params).save
-      session[:user_id] = User.create(user_params).id
-      redirect_to '/profile'
-    else
-      redirect_to '/signup'
-    end
+    # TODO: fixed the three times creating same user error, now need to figure out how to add user to session.
+    # if User.create(user_params).save
+    #   session[:user_id] = User.create(user_params).id
+    #   redirect_to(profile_path)
+    # else
+    #   redirect_to(signup_path)
+    # end
   end
 
   def show
