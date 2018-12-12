@@ -6,7 +6,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'profile': 'profile'
     'faq': 'faq'
     'supincome': 'supincome'
-    'about-team': 'about-team'
+    'about-team': 'aboutteam'
   events:
     'submit #new_signup': 'createUser'
 
@@ -18,6 +18,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("faq")
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
 
   login: ->
@@ -28,6 +29,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("faq")
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
 
   signup: ->
@@ -38,6 +40,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("faq")
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
     $("#container-main").html(view_signup.render().el)
 
   createUser: (event) ->
@@ -63,6 +66,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
     $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
 
   faq: ->
@@ -73,6 +77,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("signup")
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
 
   supincome: ->
@@ -83,6 +88,19 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("signup")
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("faq")
+    $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
+
+  aboutteam: ->
+    view = new Simplebudget.Views.Team()
+    $("footer").addClass("fixed-bottom")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").addClass("team")
+    $("#container-main").html(view.render().el)
+
 
 

@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat");
+
+/* color and transition variables */
+:root {
+    --primary-color: #f4f4f4;
+    --primary-color-hover: #f4f4f4;
+    --secondary-color: #f4f4f4;
+    --secondary-color-hover: #bacfe3;
+    --btn-color: #f4f4f4;
+    --easeOut: all 0.25s ease-out;
+}
+h2.team{
+    color: #bacfe3;
+    font-weight: bold;
+    text-shadow: 0.75px 1.5px 1.5px;
+}
+p.team{
+    color: #bacfe3;
+}
+
+html.team {
+    height: 100%;
+}
+
+body.team {
+    font-family: "Montserrat", sans-serif;
+    /*background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");*/
+
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    /*line-height: 1.19;*/
+    /*vertical-align: middle;*/
+}
+
+
+
+label.team {
+    font-family: "Lato", sans-serif;
+}
+
+/* ===== team images ===== */
+
+.brittanyPic {
+    background: url("https://s3.amazonaws.com/alumni.codeup.com/BrittanyRussell.jpg");
+}
+
+.hunterPic {
+    background: url("https://s3.amazonaws.com/alumni.codeup.com/HunterHouts.jpg");
+}
+
+.patrickPic {
+    background: url("https://s3.amazonaws.com/alumni.codeup.com/PatrickFisher.jpg");
+}
+
+#patrick {
+    margin-bottom: 3px;
+}
+.nameHighlight {
+    background-color: rgba(244, 244, 244, 0.85);
+    border-radius: 3px;
+    padding: .15em;
+    color: #24344c;
+    font-size: 22px;
+    font-weight: bold;
+    max-width: 195px;
+    text-shadow: 1.5px 1.5px 1.5px rgba(244, 244, 244, 0.85);
+}
+
+.teamImg {
+    margin: auto;
+    height: 350px;
+    width: 350px;
+    border-radius: 50%;
+    background-size: cover;
+}
+
+.grid-profile {
+    display: grid;
+    margin: 4.5em auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+}
+
+.footer.team {
+    position: absolute;
+}
+
+/* ====== utility classes ===== */
+
+.container.team {
+    max-width: 1180px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.lead.team {
+    font-size: 1rem;
+    font-family: Montserrat;
+    font-weight: bold;
+}
+
+#icons {
+    font-size: 2rem;
+}
+
+#icons a.team {
+    text-decoration: none;
+    color: var(--secondary-color-hover);
+}
+
+#icons i.team:hover {
+    color: var(--btn-color);
+    transition: var(--easeOut);
+}
+i.team {
+    --primary-color: #f4f4f4;
+    --primary-color-hover: #f4f4f4;
+    --secondary-color: #f4f4f4;
+    --secondary-color-hover: #bacfe3;
+    --btn-color: #f4f4f4;
+    --easeOut: all 0.25s ease-out;
+}
+
+/* ====== mobile view ====== */
+@media screen and (max-width: 1025px) {
+
+
+    .grid-profile {
+        grid-template-areas:
+                "brittany"
+                "hunter"
+                "patrick";
+        grid-template-columns: 1fr;
+    }
+
+    .footer.team {
+        position: absolute;
+    }
+    h2.team{
+        text-shadow: 1.25px 1.25px 1.25px;
+    }
+    .teamImg{
+        height: 200px;
+        width: 200px;
+    }
+}
