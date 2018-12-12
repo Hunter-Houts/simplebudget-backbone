@@ -1,0 +1,87 @@
+html.supincome {
+    height: 100%;
+}
+.footer.supincome{
+    position: absolute;
+}
+
+body.supincome {
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+#main-card.supincome {
+    background-color: #343a40;
+    color: white;
+    width: 65%;
+    height: 25%;
+    margin: 5em auto 3em auto;
+    padding: 1em;
+}
+
+a.supincome {
+    color: white;
+}
+
+a.supincome:hover {
+    color: white;
+
+}
+.card-body.supincome{
+    color:white;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+}
+
+
+h2.supincome{
+    color:#eae0c8;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+}
+i.supincome{
+    color: white;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+}
+
+i.supincome:hover {
+    color: white;
+}
+
+.btn-link.supincome{
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+    color:#eae0c8;
+}
+.btn-link.supincome:hover{
+    color: white;
+}
+
+@media screen and (max-width: 415px){
+    #main-card.supincome{
+        width:100%;
+    }
+    .btn.supincome{
+        width: 50%;
+    }
+
+
+}
+@media screen and (max-width: 769px) and (max-height: 1025px){
+    #main-card.supincome{
+        width:100%;
+    }
+    .btn.supincome{
+        white-space: pre-line!important;
+    }
+}
+@media screen and (max-width: 1025px) and (max-height: 769px){
+    #main-card.supincome{
+        width:100%;
+
+    }
+}

@@ -5,6 +5,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'signup': 'signup'
     'profile': 'profile'
     'faq': 'faq'
+    'supincome': 'supincome'
+    'about-team': 'about-team'
   events:
     'submit #new_signup': 'createUser'
 
@@ -14,6 +16,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
     $("#container-main").html(view.render().el)
 
   login: ->
@@ -22,6 +26,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").addClass("login")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
     $("#container-main").html(view.render().el)
 
   signup: ->
@@ -30,6 +36,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").addClass("signup")
     $("body, html").removeClass("login")
     $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
     $("#container-main").html(view_signup.render().el)
 
   createUser: (event) ->
@@ -54,6 +62,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
+    $("body, html, footer").removeClass("supincome")
     $("#container-main").html(view.render().el)
 
   faq: ->
@@ -62,5 +71,18 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").addClass("faq")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
     $("#container-main").html(view.render().el)
+
+  supincome: ->
+    view = new Simplebudget.Views.SupIncome()
+    $("footer").addClass("fixed-bottom")
+    $("body, html, footer").addClass("supincome")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("faq")
+    $("#container-main").html(view.render().el)
+
 
