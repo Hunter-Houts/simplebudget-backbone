@@ -1,0 +1,57 @@
+body.postIndex {
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+#main-card.postIndex {
+    background-color: #343a40;
+    color: white;
+    width: 50%;
+    height: 25%;
+    margin: 50px auto 20px auto;
+
+}
+
+
+@media screen and (min-width: 569px){
+    #main-card.postIndex {
+        margin: 20px auto 5px auto;
+    }
+
+}
+
+@media screen and (max-height: 365px){
+    #main-card.postIndex{
+        width:100%;
+        padding: 50px;
+    }
+    .footer-bottom.postIndex{
+        position: -ms-device-fixed;
+    }
+    #footer.postIndex{
+        position: absolute;
+    }
+    .footer.postIndex{
+        position: absolute;
+    }
+}
+
+@media screen and (max-width: 415px){
+    #main-card.postIndex{
+        width:100%;
+        padding: 50px;
+    }
+    .footer-bottom.postIndex{
+        position: -ms-device-fixed;
+    }
+    #footer.postIndex{
+        position: absolute;
+    }
+    .footer.postIndex{
+        position: absolute;
+    }
+}

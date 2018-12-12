@@ -2,6 +2,18 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   include ActionController::MimeResponds
   helper_method :current_user
+  # before_action :coerce_json
+
+  # def coerce_json
+  #   # Rails converts the following header:
+  #   #
+  #   # Accept: application/json, text/javascript, */*; q=0.01
+  #   #
+  #   # into text/html. Force it back to json.
+  #   if request.headers[ 'HTTP_ACCEPT' ] =~ /^\s*application\/json/
+  #     request.format = 'json'
+  #   end
+  # end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

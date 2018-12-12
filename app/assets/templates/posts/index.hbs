@@ -1,1 +1,17 @@
-<h1>POSTS</h1>
+<div class="container-fluid">
+    {{#each collection}}
+        <div class="card text-center postIndex" id="main-card">
+            <div class="card-header">
+                <span>{{post.user.username}}</span>
+            </div>
+            <div class="card-body">
+        <a style="color: white;" href='/posts/' + {{post.id}}><h1 class="card-title">{{post.title}}</h1></a>
+        <p class="card-text">{{post.body}}</p>
+            </div>
+        </div>
+        <br/>
+    {{/each}}
+</div>
+<br/>
+<br/>
+<br/>

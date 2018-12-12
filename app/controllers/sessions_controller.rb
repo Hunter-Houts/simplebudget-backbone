@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    render 'javascripts/templates/users/login.hbs'
   end
 
   def create

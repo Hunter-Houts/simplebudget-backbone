@@ -3,7 +3,6 @@ body.login, html.login {
 }
 
 body.login {
-    font-family: "Montserrat", sans-serif;
     background: url("stockbgimage.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;

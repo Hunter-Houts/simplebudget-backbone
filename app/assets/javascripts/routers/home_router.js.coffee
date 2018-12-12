@@ -7,8 +7,13 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'faq': 'faq'
     'supincome': 'supincome'
     'about-team': 'aboutteam'
+    'posts' : 'postIndex'
   events:
     'submit #new_signup': 'createUser'
+
+  initialize: ->
+    @collection = new Simplebudget.Collections.Posts()
+    @collection.fetch()
 
   index: ->
     view = new Simplebudget.Views.Home()
@@ -19,6 +24,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body, footer").removeClass("postIndex")
     $("#container-main").html(view.render().el)
 
   login: ->
@@ -30,6 +36,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body, footer").removeClass("postIndex")
     $("#container-main").html(view.render().el)
 
   signup: ->
@@ -41,6 +48,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body, footer").removeClass("postIndex")
     $("#container-main").html(view_signup.render().el)
 
   createUser: (event) ->
@@ -67,6 +75,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("faq")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body, footer").removeClass("postIndex")
     $("#container-main").html(view.render().el)
 
   faq: ->
@@ -78,6 +87,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body, footer").removeClass("postIndex")
     $("#container-main").html(view.render().el)
 
   supincome: ->
@@ -89,6 +99,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("faq")
     $("body, html, footer").removeClass("team")
+    $("body, footer").removeClass("postIndex")
     $("#container-main").html(view.render().el)
 
   aboutteam: ->
@@ -99,7 +110,20 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("faq")
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
+    $("body, footer").removeClass("postIndex")
     $("body, html, footer").addClass("team")
+    $("#container-main").html(view.render().el)
+
+  postIndex: ->
+    view = new Simplebudget.Views.PostIndex(collection: @collection)
+    $("footer").addClass("fixed-bottom")
+    $("body, footer").addClass("postIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
 
 
