@@ -1,0 +1,67 @@
+html.faq {
+    height: 100%;
+}
+.footer.faq{
+    position: absolute;
+}
+#main-card.faq {
+    background-color: #343a40;
+    color: white;
+    width: 65%;
+    height: 25%;
+    margin: 5em auto 3em auto;
+    padding: 1em;
+}
+
+body.faq {
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+.card-body.faq{
+    color:white;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+}
+h2.faq{
+    color:#eae0c8;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+}
+i.faq{
+    color:#eae0c8;
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+}
+
+.btn-link.faq{
+    font-weight: bold;
+    text-shadow: 1.5px 1.5px 1.5px black;
+    color:#eae0c8;
+}
+.btn-link.faq:hover{
+    color:white;
+}
+hr.faq{
+    color: #f4f4f4;
+}
+@media screen and (max-width: 660px) {
+
+    /*body, html {*/
+        /*height: 100%;*/
+        /*width: 750px;*/
+    /*}*/
+    #main-card.faq{
+        width:100%;
+    }
+    .btn.faq{
+        white-space: pre-line!important;
+    }
+
+    .footer.faq {
+        position: relative;
+    }
+}

@@ -39,9 +39,9 @@
         <a class="nav-item nav-link active" href="/posts"><i class="fas fa-clipboard"></i> Community</a>
         <a class="nav-item nav-link active" href="/profile"><i class="fas fa-user"></i> Your Profile</a>
         <a class="nav-item nav-link active" href="/reviews/create"><i class="fas fa-star"></i> Leave a Review</a>
-        <!-- <form action="/logout" method="POST"> -->
-            <i class="navlink-custom fas fa-sign-out-alt"></i><%= button_to "Log out", logout_path, method: "delete", :class => "nav-item nav-link active btn btn-danger", :style => "background-color: transparent; border: none;"%>
-        <!-- </form> -->
+        <form action="/logout" method="POST">
+           <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </form>
     </div>
 
 <% end %>
@@ -54,15 +54,15 @@
    background-color: #343a40;">
     <div class="container-fluid text-center  white">
         <div class="col-12">
-            <a class="link-custom" style="color: #eae0c8;" th:href="'/'">Home </a>
+            <a class="link-custom" style="color: #eae0c8;" href='/'>Home </a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" th:href="'/faq'">FAQ</a>
+            <a class="link-custom" style="color: #eae0c8;" href='/faq'>FAQ</a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" th:href="'/about-team'">The Team</a>
+            <a class="link-custom" style="color: #eae0c8;" href='/about-team'>The Team</a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" th:href="'/supincome'">Supplemental Income</a>
+            <a class="link-custom" style="color: #eae0c8;" href='/supincome'>Supplemental Income</a>
             <span>|</span>
-            <a class="link-custom" style="color: #eae0c8;" th:href="'/reviews'">Our Reviews</a>
+            <a class="link-custom" style="color: #eae0c8;" href='/reviews'>Our Reviews</a>
 
         </div>
         <div class="col-12 footer-bottom text-center white">

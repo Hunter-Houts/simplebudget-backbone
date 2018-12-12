@@ -4,6 +4,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'login': 'login'
     'signup': 'signup'
     'profile': 'profile'
+    'faq': 'faq'
   events:
     'submit #new_signup': 'createUser'
 
@@ -12,6 +13,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("footer").removeClass("fixed-bottom")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
     $("#container-main").html(view.render().el)
 
   login: ->
@@ -19,6 +21,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("login")
     $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
     $("#container-main").html(view.render().el)
 
   signup: ->
@@ -26,6 +29,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("signup")
     $("body, html").removeClass("login")
+    $("body, html, footer").removeClass("faq")
     $("#container-main").html(view_signup.render().el)
 
   createUser: (event) ->
@@ -48,5 +52,15 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("profile")
     $("body, html").removeClass("login")
-    $("#container-main").html(view_signup.render().el)
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("#container-main").html(view.render().el)
+
+  faq: ->
+    view = new Simplebudget.Views.FAQ()
+    $("footer").addClass("fixed-bottom")
+    $("body, html, footer").addClass("faq")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("#container-main").html(view.render().el)
 
