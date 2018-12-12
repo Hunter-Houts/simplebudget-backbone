@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Lato|Montserrat");
 
 /* color and transition variables */
 :root {
@@ -23,7 +22,6 @@ html.team {
 }
 
 body.team {
-    font-family: "Montserrat", sans-serif;
     /*background-image: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url("https://i.postimg.cc/Y2QTkX6y/abstract-art-decoration-1029624.jpg");*/
 
     background: url("stockbgimage.jpg") no-repeat center center fixed;
