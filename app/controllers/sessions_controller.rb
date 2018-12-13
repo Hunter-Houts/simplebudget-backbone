@@ -4,22 +4,22 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
-    render 'javascripts/templates/users/login.hbs'
   end
 
   def create
-    @user = User.find_by_username(params[:session][:username])
-    if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = User.find_by_username(params[:session][:username]).id
-      redirect_to '/profile'
+    @user = User.find_by_username(params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      return redirect_to(profile_path)
     else
-      redirect_to 'login'
+      puts "LOOK HERE"
+      redirect_to(login_path)
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/'
+    redirect_to root_path
   end
   protected
 

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   respond_to :json
-
+  # TODO: Fix problem when directly going to /posts in url
   def index
     render :json => Post.includes(:user).all, include: {user: {only: :username}}
   end
