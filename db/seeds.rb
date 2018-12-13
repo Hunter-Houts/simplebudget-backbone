@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 user_test = User.create!(id: 1, username: "test", email: "test@test.com", password: "test", phonenumber: nil)
 test_post = Post.create!(id: 1, title: "test post", body: "please ignore", user_id: user_test.id)
+test_post = Post.create!(id: 2, title: "test post 2", body: "please ignore again", user_id: user_test.id)

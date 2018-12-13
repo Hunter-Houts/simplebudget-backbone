@@ -7,6 +7,8 @@ window.Simplebudget =
     new Simplebudget.Routers.Home()
     Backbone.history.start({pushState: true})
 
+Handlebars.registerHelper 'ifEquals', (arg1, arg2, options) ->
+  if arg1 == arg2 then options.fn(this) else options.inverse(this)
 $(document).ready ->
   Simplebudget.initialize()
   $(document).on('click', 'a:not([data-bypass])', (evt) ->

@@ -8,6 +8,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'supincome': 'supincome'
     'about-team': 'aboutteam'
     'posts' : 'postIndex'
+    'posts/:id': 'showPost'
   events:
     'submit #new_signup': 'createUser'
 
@@ -18,6 +19,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
   index: ->
     view = new Simplebudget.Views.Home()
     $("footer").removeClass("fixed-bottom")
+    $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
@@ -31,6 +33,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.UsersIndex()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("login")
+    $("body, footer").removeClass("postShow")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
     $("body, html").removeClass("profile")
@@ -43,6 +46,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view_signup = new Simplebudget.Views.UsersSignup()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("signup")
+    $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html, footer").removeClass("faq")
     $("body, html").removeClass("profile")
@@ -70,6 +74,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.Profile()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("profile")
+    $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
@@ -82,6 +87,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.FAQ()
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").addClass("faq")
+    $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html").removeClass("profile")
@@ -94,6 +100,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.SupIncome()
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").addClass("supincome")
+    $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html").removeClass("profile")
@@ -107,6 +114,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("footer").addClass("fixed-bottom")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
+    $("body, footer").removeClass("postShow")
     $("body, html, footer").removeClass("faq")
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
@@ -118,6 +126,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.PostIndex(collection: @collection)
     $("footer").addClass("fixed-bottom")
     $("body, footer").addClass("postIndex")
+    $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
@@ -125,6 +134,20 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
+
+  showPost: ->
+    view = new Simplebudget.Views.PostShow()
+    $("footer").addClass("fixed-bottom")
+    $("body, footer").addClass("postShow")
+    $("body, footer").removeClass("postIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("#container-main").html(view.render().el)
+
 
 
 
