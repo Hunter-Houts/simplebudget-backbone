@@ -1,12 +1,13 @@
 <div class="container-fluid">
-    {{#each collection}}
+  <p>{{posts.length}}</p>
+    {{#each posts}}
         <div class="card text-center postIndex" id="main-card">
             <div class="card-header">
                 <span>{{post.user.username}}</span>
             </div>
             <div class="card-body">
-        <a style="color: white;" href='/posts/' + {{post.id}}><h1 class="card-title">{{post.title}}</h1></a>
-        <p class="card-text">{{post.body}}</p>
+        <a style="color: white;" href='/posts/' + {{id}}><h1 class="card-title">{{title}}</h1></a>
+        <p class="card-text">{{body}}</p>
             </div>
         </div>
         <br/>

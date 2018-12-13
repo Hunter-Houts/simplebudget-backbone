@@ -13,8 +13,14 @@
 ActiveRecord::Schema.define(version: 2018_12_11_144034) do
 
   create_table "accounts", force: :cascade do |t|
+    t.decimal "income", precision: 64, scale: 12
+    t.integer "option"
+    t.integer "user_id"
+    t.integer "bill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_accounts_on_bill_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "bills", force: :cascade do |t|
@@ -65,10 +71,8 @@ ActiveRecord::Schema.define(version: 2018_12_11_144034) do
     t.string "email"
     t.string "phonenumber"
     t.string "password_digest"
-    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_users_on_comment_id"
   end
 
 end
