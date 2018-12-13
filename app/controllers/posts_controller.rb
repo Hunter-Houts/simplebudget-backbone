@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Post.all
+    render :json => Post.includes(:user).all, include: {user: {only: :username}}
   end
 
   def show
