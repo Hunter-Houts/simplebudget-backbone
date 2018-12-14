@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # module current_user end
+  before_action :current_user
   respond_to :json
   # TODO: Fix problem when directly going to /posts in url
   def index
@@ -7,7 +7,8 @@ class PostsController < ApplicationController
   end
 #TODO: Find a way to pass helper method to view.
   def show
-    render :json => Post.includes(:user,:comments, @current_user).find(params[:id])
+    @current_user = :current_user
+    render :json => Post.includes(:user,:comments,).find(params[:id])
   end
 
   def create
