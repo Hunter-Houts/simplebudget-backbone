@@ -135,8 +135,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
 
-  showPost: ->
-    view = new Simplebudget.Views.PostShow()
+  showPost: (id) ->
+    view = new Simplebudget.Views.PostShow({id: "#{id}"})
     $("footer").addClass("fixed-bottom")
     $("body, footer").addClass("postShow")
     $("body, footer").removeClass("postIndex")

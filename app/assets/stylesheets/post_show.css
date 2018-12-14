@@ -1,0 +1,111 @@
+body.postShow {
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+#main-card.postShow {
+    /*background-color: black;*/
+    /*color: #44a8c5;*/
+    width: 50%;
+    height: 100%;
+
+    margin: 50px auto 500px auto;
+    padding: 0;
+
+}
+.card.postShow{
+    background-color: #333a41;
+    color: white;
+}
+.btn.postShow{
+    /*margin-bottom: .5%;*/
+    /*margin-left: .5%;*/
+    background-color: white;
+    color:black;
+}
+.custom-width {
+    margin-bottom: .5%;
+    margin-left: 1.35%;
+}
+.custom-width1 {
+    margin-bottom: .5%;
+    margin-left: 0;
+}
+.card-header{
+    margin-top: 1%;
+}
+.input-width{
+    margin-left: 1.35%;
+}
+.input-width1{
+    margin-left: 0;
+}
+@media screen and (min-width: 569px) {
+    .custom-width{
+        width: 15% !important;
+    }
+    .custom-width1{
+        width: 15% !important;
+    }
+}
+@media screen and (width: 320px){
+    .input-width{
+        margin-left: 6.8%;
+    }
+    .custom-width {
+        margin-left: 6.8%;
+    }
+
+}
+@media screen and (max-width: 415px) and (min-width: 410px){
+    .input-width{
+        margin-left: 5.2%;
+    }
+    .custom-width {
+        margin-left: 5.2%;
+    }
+}
+@media screen and (width: 414px){
+    .input-width{
+        margin-left: 5%;
+    }
+    .custom-width {
+        margin-left: 5%;
+    }
+}
+@media screen and (width: 375px){
+    .input-width{
+        margin-left: 5.8%;
+    }
+    .custom-width {
+        margin-left: 5.8%;
+    }
+}
+@media screen and (width: 360px){
+    .input-width{
+        margin-left: 6%;
+    }
+    .custom-width {
+        margin-left: 6%;
+    }
+}
+@media screen and (width: 768px){
+    .input-width{
+        margin-left: 2.6%;
+    }
+    .custom-width {
+        margin-left: 2.6%;
+    }
+}
+@media screen and (width: 1024px){
+    .input-width{
+        margin-left: 1.9%;
+    }
+    .custom-width {
+        margin-left: 1.9%;
+    }
+}

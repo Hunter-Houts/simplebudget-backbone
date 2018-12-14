@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 #TODO: Find a way to pass helper method to view.
   def show
     @current_user = :current_user
-    render :json => Post.includes(:user,:comments,).find(params[:id])
+    render :json => Post.includes(:user,:comments).find(params[:id]), include: {user: {user: :username, user: :id}}
   end
 
   def create
