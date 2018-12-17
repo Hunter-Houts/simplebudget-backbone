@@ -11,24 +11,24 @@
 <div id="plx">
     <div class="container h-100 justify-content-center align-items-center">
                 <div class="row justify-content-center align-items-center">
-                    <div>
+                    {{#each reviews}}
                         <div class="col-sm-6"
                              style= " padding-bottom: 1em;">
                             <div class="card h-100 text-center" style="width: 16rem; height: auto" id="main-card">
                                 <div class="card-header  border-light">
                                     <p class="col-sm-12">Our Latest Reviews</p>
 
-                                    <p class="col-sm-12"></p>
+                                    <p class="col-sm-12">Posted by: {{user.username}}</p>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title"></h5>
-                                    <p class="card-text"></p>
+                                    <h5 class="card-title">This user gave us a {{rating}} out of 5!</h5>
+                                    <p class="card-text">{{body}}</p>
                                 </div>
                                 <div class="card-footer border-light">
                                     Simple Budget
                                 </div>
                             </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>

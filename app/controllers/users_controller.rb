@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    # TODO: fixed the three times creating same user error, now need to figure out how to add user to session.
     if @user.save
       session[:user_id] = @user.id
       redirect_to(profile_path)
