@@ -45,6 +45,7 @@ i.faq{
 .btn-link.faq:hover{
     color:white;
 }
+/*I guess this hr style is doing nothing.*/
 hr.faq{
     color: #f4f4f4;
 }

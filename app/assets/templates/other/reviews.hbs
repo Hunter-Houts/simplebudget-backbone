@@ -1,0 +1,32 @@
+<div class="container-fluid justify-content-center align-items-center">
+    <div class="text-center">
+        <h2 class="section-head mt-3 justify-content-center reviewIndex"><i class="fas fa-users header-icons reviewIndex"></i>Here are all our reviews!</h2>
+        <hr class="reviewIndex">
+        <div class="container-fluid h-100 justify-content-center align-items-center">
+            <div class="row justify-content-center align-items-center reviewIndex">
+                {{#each reviews}}
+                    <div class="col-sm-6">
+                        <div class="card text-center reviewIndex" style="width: 19rem; height:15em;" id="main-card">
+                            <div class="card-header  border-light">
+                                <span>Posted by: {{user.username}}</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title"> This user gave us a {{rating}} out of 5!</h5>
+                                <p class="card-text reviewIndex">{{body}}</p>
+                            </div>
+                            <div class="card-footer border-light">
+                                Simple Budget
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>

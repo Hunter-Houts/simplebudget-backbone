@@ -20,6 +20,10 @@
             <span class="mr-1"><%= image_tag("tranlogo.png", :alt => "", :style => "width: 35px; height: 35px;") %></span> Simple Budget</a>
     </div>
     <% if not current_user %>
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="navbar-nav mr-auto">
         <a class="nav-item nav-link active navlink-custom" href="/posts" id="posts"><i class="fas fa-clipboard"></i> Community</a>
         <a href="/signup" class="nav-item nav-link active" id="signup"><i class="fas fa-user-plus"></i> Sign Up</a>
@@ -42,6 +46,11 @@
         <form action="/logout" method="POST">
            <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
+    </div>
+    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET" style=" padding-left: 12px" >
+        <input class="search-custom" type="search" name="search"/>
+        <input class="search-custom btn" style="background-color: white;color: #343a40; padding: 2px 7px;" type="submit" value="Search Community!"/>    </form>
+    </li>
     </div>
 
 <% end %>

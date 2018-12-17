@@ -9,6 +9,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'about-team': 'aboutteam'
     'posts' : 'postIndex'
     'posts/:id': 'showPost'
+    'reviews' : 'reviews'
   events:
     'submit #new_signup': 'createUser'
 
@@ -19,6 +20,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
   index: ->
     view = new Simplebudget.Views.Home()
     $("footer").removeClass("fixed-bottom")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
@@ -33,6 +35,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.UsersIndex()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("login")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, footer").removeClass("postShow")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
@@ -46,6 +49,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view_signup = new Simplebudget.Views.UsersSignup()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("signup")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html, footer").removeClass("faq")
@@ -75,6 +79,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("profile")
     $("body, footer").removeClass("postShow")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html, footer").removeClass("faq")
@@ -88,6 +93,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").addClass("faq")
     $("body, footer").removeClass("postShow")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, html").removeClass("profile")
@@ -100,6 +106,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.SupIncome()
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").addClass("supincome")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
@@ -112,6 +119,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
   aboutteam: ->
     view = new Simplebudget.Views.Team()
     $("footer").addClass("fixed-bottom")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
     $("body, footer").removeClass("postShow")
@@ -126,6 +134,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.PostIndex(collection: @collection)
     $("footer").addClass("fixed-bottom")
     $("body, footer").addClass("postIndex")
+    $("body, html, footer").removeClass("reviewIndex")
     $("body, footer").removeClass("postShow")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")
@@ -139,6 +148,21 @@ class Simplebudget.Routers.Home extends Backbone.Router
     view = new Simplebudget.Views.PostShow({id: "#{id}"})
     $("footer").addClass("fixed-bottom")
     $("body, footer").addClass("postShow")
+    $("body, html, footer").removeClass("reviewIndex")
+    $("body, footer").removeClass("postIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("#container-main").html(view.render().el)
+
+  reviews: ->
+    view = new Simplebudget.Views.ReviewIndex()
+    $("footer").addClass("fixed-bottom")
+    $("body, html, footer").addClass("reviewIndex")
+    $("body, footer").removeClass("postShow")
     $("body, footer").removeClass("postIndex")
     $("body, html").removeClass("login")
     $("body, html").removeClass("signup")

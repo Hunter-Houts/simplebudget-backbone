@@ -8,3 +8,4 @@
 user_test = User.create!(id: 1, username: "test", email: "test@test.com", password: "test", phonenumber: nil)
 test_post = Post.create!(id: 1, title: "test post", body: "please ignore", user_id: user_test.id)
 test_post = Post.create!(id: 2, title: "test post 2", body: "please ignore again", user_id: user_test.id)
+review_test = Review.create!(id:1, body: "test review", rating: 5, user_id: user_test.id)
