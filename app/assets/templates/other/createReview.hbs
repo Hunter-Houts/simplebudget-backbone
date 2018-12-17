@@ -1,0 +1,24 @@
+<div class="container-fluid">
+<div class="card d-flex flex-nowrap text-center" id="main-card">
+   <h2 class="d-flex flex-nowrap"><div class="container-fluid text-center">Leave a Review</div></h2>
+    <form action='/reviews/create' method="post" id="newReview">
+    <div class="slidecontainer">
+        <label for="rating">Rating</label>
+        <input type="range" min="1" max="5"  value ="1"  class = "slider" id="rating"/>
+    <span>Rating:</span>
+        <span id="f">1</span>
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="body">Body:</label>
+        <textarea class="form-control text-center" rows="8" cols="100" id="body" required/>
+        <br/>
+    </div>
+    <input  class= "text-center" type="submit"/>
+</form>
+</div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>

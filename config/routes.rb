@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'profile' => 'users#show'
   get 'posts' => 'posts#index'
   get 'reviews' => 'reviews#index'
+  get 'reviews/create' => 'reviews#new'
+  post 'reviews/create' => 'reviews#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
