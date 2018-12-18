@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :current_user
-    respond_to :json
+  respond_to :json
 
   def params
     request.parameters
@@ -11,28 +10,24 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @current_user = User.find(session[:user_id])
-    @review = Review.find_by_user_id(current_user.id)
-    if @review
-      render :json => Review.includes(:user).find(params[:id]), include: {user: {user: :username, user: :id}}
-    else
-      redirect_to(root_path)
-    end
+    # @current_user = User.find(session[:user_id])
+    # @review = Review.find_by_user_id(current_user.id)
+    # if @review
+      render :json => Review.find(params[:id])
+    # else
+    #   redirect_to(root_path)
+    # end
   end
 
   def new
-    @new_review = Review.new
-    redirect_to(review_path)
   end
   # TODO: Fix this, only saves user value nothing else.
   def create
-    @current_user = User.find(session[:user_id])
     @review = Review.create(params[:review])
-    @review.user = @current_user
     if @review.save
       redirect_to(root_path)
     else
-      redirect_to(review_path)
+      redirect_to(reviews_path)
     end
   end
 
@@ -43,4 +38,9 @@ class ReviewsController < ApplicationController
   def destroy
     respond_with Review.destroy(params[:id])
   end
+
+  # private
+  # def review_params
+  #   params.permit(:review)
+  # end
 end

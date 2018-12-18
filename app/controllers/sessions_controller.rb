@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   respond_to :json
   after_action :set_csrf_header, only: [:new, :create, :destroy]
+  def index
+    respond_with User.find(session[:user_id]).to_json
+  end
 
   def new
     @user = User.new

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
   resources :posts
-  resources :reviews
+  # resources :reviews
   root to: "main#index"
   # scope contraints: {format: /html/} do
   #   get '*path', to: "main#index"
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'posts' => 'posts#index'
   get 'reviews' => 'reviews#index'
   get 'reviews/create' => 'reviews#new'
-  post 'reviews/create' => 'reviews#create'
+  post 'reviews' => 'reviews#create'
   get 'reviews/:id' => 'reviews#show'
   post 'reviews/:id' => 'reviews#update'
 
