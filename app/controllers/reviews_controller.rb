@@ -7,17 +7,27 @@ class ReviewsController < ApplicationController
   end
   # TODO: Fix problem when directly going to /reviews in url
   def index
-    render :json => Review.includes(:user).all, include: {user: {only: :username}}
+    respond_with Review.includes(:user).all, include: {user: {only: :username}}
+  end
+
+  def show
+    redirect_to(root_path)
   end
 
   def new
     @new_review = Review.new
     redirect_to(review_path)
   end
-
+  # TODO: Fix this, only saves user value nothing else.
   def create
     @current_user = User.find(session[:user_id])
-    respond_with Review.create!(params[:review,:current_user])
+    @review = Review.create(params[:review])
+    @review.user = @current_user
+    if @review.save
+      redirect_to(root_path)
+    else
+      redirect_to(review_path)
+    end
   end
 
   def update

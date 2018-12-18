@@ -11,8 +11,10 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'posts/:id': 'showPost'
     'reviews' : 'reviews'
     'reviews/create': 'createReviewPage'
+    'reviews/:id/edit' : 'editReviewPage'
   events:
     'submit #new_signup': 'createUser'
+    'submit #newReview': 'createReview'
 
   initialize: ->
     @collection = new Simplebudget.Collections.Posts()
@@ -176,6 +178,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
   createReviewPage: ->
     view_create_review = new Simplebudget.Views.CreateReview()
     $("footer").addClass("fixed-bottom")
+    $("body").addClass("createReview")
     $("body, html, footer").removeClass("reviewIndex")
     $("body, footer").removeClass("postShow")
     $("body, footer").removeClass("postIndex")
@@ -186,6 +189,17 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("#container-main").html(view_create_review.render().el)
+
+  createReview: (event) ->
+    event.preventDefault()
+    rating = rating: parseInt($('#rating').val())
+    body = body: $('#body').val()
+    @view_create_review.create rating, body
+      wait: true
+
+  editReviewPage: ->
+
+
 
 
 
