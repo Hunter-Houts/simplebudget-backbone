@@ -1,12 +1,18 @@
+class XHRConstraint
+  def matches?(request)
+    !request.xhr? && !(request.url =~ /\.json$/ && ::Rails.env == 'development')
+  end
+end
 Rails.application.routes.draw do
+  get '*path' => 'main#index', :constraints => XHRConstraint.new #This is gold.
   resources :sessions
   resources :users
   resources :posts
   resources :reviews
   root to: "main#index"
-  scope contraints: {format: /html/} do
-    get '*path', to: "main#index"
-  end
+  # scope contraints: {format: /html/} do
+  #   get '*path', to: "main#index"
+  # end
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   post 'logout' => 'sessions#destroy'
@@ -17,6 +23,8 @@ Rails.application.routes.draw do
   get 'reviews' => 'reviews#index'
   get 'reviews/create' => 'reviews#new'
   post 'reviews/create' => 'reviews#create'
+  get 'reviews/:id' => 'reviews#show'
+  post 'reviews/:id' => 'reviews#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

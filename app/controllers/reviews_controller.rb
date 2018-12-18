@@ -11,7 +11,13 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    redirect_to(root_path)
+    @current_user = User.find(session[:user_id])
+    @review = Review.find_by_user_id(current_user.id)
+    if @review
+      render :json => Review.includes(:user).find(params[:id]), include: {user: {user: :username, user: :id}}
+    else
+      redirect_to(root_path)
+    end
   end
 
   def new

@@ -11,7 +11,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'posts/:id': 'showPost'
     'reviews' : 'reviews'
     'reviews/create': 'createReviewPage'
-    'reviews/:id/edit' : 'editReviewPage'
+    'reviews/:id' : 'editReviewPage'
   events:
     'submit #new_signup': 'createUser'
     'submit #newReview': 'createReview'
@@ -32,6 +32,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body, footer").removeClass("postIndex")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   login: ->
@@ -46,6 +47,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body, footer").removeClass("postIndex")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   signup: ->
@@ -60,6 +62,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body, footer").removeClass("postIndex")
+    $("body").removeClass("editReview")
     $("#container-main").html(view_signup.render().el)
 
   createUser: (event) ->
@@ -89,6 +92,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body, footer").removeClass("postIndex")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   faq: ->
@@ -103,6 +107,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body, footer").removeClass("postIndex")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   supincome: ->
@@ -117,6 +122,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("faq")
     $("body, html, footer").removeClass("team")
     $("body, footer").removeClass("postIndex")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   aboutteam: ->
@@ -131,6 +137,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, footer").removeClass("postIndex")
     $("body, html, footer").addClass("team")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   postIndex: ->
@@ -145,6 +152,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   showPost: (id) ->
@@ -159,6 +167,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   reviews: ->
@@ -173,6 +182,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
 
   createReviewPage: ->
@@ -188,6 +198,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html").removeClass("profile")
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
     $("#container-main").html(view_create_review.render().el)
 
   createReview: (event) ->
@@ -197,7 +208,21 @@ class Simplebudget.Routers.Home extends Backbone.Router
     @view_create_review.create rating, body
       wait: true
 
-  editReviewPage: ->
+  editReviewPage: (id) ->
+    view = new Simplebudget.Views.ReviewEdit({id: "#{id}"})
+    $("footer").addClass("fixed-bottom")
+    $("body").addClass("editReview")
+    $("body, footer").removeClass("postShow")
+    $("body, html, footer").removeClass("reviewIndex")
+    $("body, footer").removeClass("postIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("#container-main").html(view.render().el)
+
 
 
 
