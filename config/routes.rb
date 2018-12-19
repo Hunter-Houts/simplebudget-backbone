@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   post 'reviews' => 'reviews#create'
   get 'reviews/:id' => 'reviews#show'
   post 'reviews/:id' => 'reviews#update'
+  get 'posts/create' => 'posts#new'
+  post 'posts/create' => 'posts#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

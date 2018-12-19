@@ -1,0 +1,37 @@
+body.createPost {
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+
+
+textarea.form-control.createPost {
+    height: 7em;
+}
+
+
+#main-card.createPost {
+    background-color: #343a40;
+    color: white;
+    width: 50%;
+    height: 25%;
+    margin: 5em auto 3em auto;
+    padding: 1em;
+
+}
+.btn.createPost {
+    background-color: white;
+    color: #343a40;
+}
+label.createPost{
+    font-size: 1.2rem;
+}
+@media screen and (min-width: 569px){
+    .w-100.createPost{
+        width: 50% !important;
+    }
+}

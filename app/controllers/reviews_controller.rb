@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
 
   def new
   end
-  # TODO: Fix this, only saves user value nothing else.
+
   def create
     @review = Review.create(params[:review].merge(user_id: session[:user_id]))
     if @review.save

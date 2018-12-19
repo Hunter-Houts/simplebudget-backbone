@@ -3,7 +3,7 @@ class Simplebudget.Views.PostIndex extends Backbone.View
 
   initialize: ->
     @collection.on('sync change', @render, this)
-    @collection.on('add', @addPost, this)
+    @collection.on('add', @render, this)
 
   render: ->
     $(@el).html(@template(posts: @collection.toJSON()))

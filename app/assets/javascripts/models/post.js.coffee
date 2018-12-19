@@ -3,5 +3,5 @@ class Simplebudget.Models.Post extends Backbone.Model
     if this.id
       '/posts/' + this.id
     else
-      '/posts/'
+      '/posts'
 

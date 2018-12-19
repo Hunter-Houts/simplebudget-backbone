@@ -1,0 +1,20 @@
+<div class="container-fluid">
+<div class="card d-flex flex-nowrap text-center w-100 createPost" id="main-card">
+<form action='/posts/create' method="post" id="createPost">
+    <h2>Create a Post</h2>
+    <div class="form-group">
+    <label class="createPost" for="title">Title</label>
+    <input class="form-control" id="title" pattern=".*\S+.*" title="title cannot be blank" required/>
+    </div>
+    <br/>
+    <div class="form-group">
+    <label class="createPost" for="body">Body</label>
+    <textarea class="form-control createPost" rows="8" cols="100" pattern=".*\S+.*" title="body cannot be blank" id="body" required/>
+    <br/>
+    </div>
+    <input class="btn createPost" type="submit"/>
+</form>
+</div>
+</div>
+<br/>
+<br/>

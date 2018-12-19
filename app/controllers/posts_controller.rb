@@ -1,18 +1,24 @@
 class PostsController < ApplicationController
   before_action :current_user
   respond_to :json
-  # TODO: Fix problem when directly going to /posts in url
+
+  def params
+    request.parameters
+  end
+
   def index
     render :json => Post.includes(:user).all, include: {user: {only: :username}}
   end
-#TODO: Find a way to pass helper method to view.
+
+  def new
+  end
+
   def show
-    @current_user = :current_user
     render :json => Post.includes(:user,:comments).find(params[:id]), include: {user: {user: :username, user: :id}}
   end
 
   def create
-    respond_with Post.create(params[:post])
+    respond_with Post.create(params[:post].merge(user_id: session[:user_id]))
   end
 
   def update

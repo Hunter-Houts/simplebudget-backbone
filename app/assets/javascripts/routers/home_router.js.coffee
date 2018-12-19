@@ -8,6 +8,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'supincome': 'supincome'
     'about-team': 'aboutteam'
     'posts' : 'postIndex'
+    'posts/create': 'createPostPage'
     'posts/:id': 'showPost'
     'reviews' : 'reviews'
     'reviews/create': 'createReviewPage'
@@ -215,6 +216,23 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
+
+  createPostPage: ->
+    view_create_post = new Simplebudget.Views.CreatePost(post: new Simplebudget.Models.Post())
+    $("footer").addClass("fixed-bottom")
+    $("body").addClass("createPost")
+    $("body").removeClass("createReview")
+    $("body, html, footer").removeClass("reviewIndex")
+    $("body, footer").removeClass("postShow")
+    $("body, footer").removeClass("postIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
+    $("#container-main").html(view_create_post.render().el)
 
 
 
