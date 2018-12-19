@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
   end
   # TODO: Fix this, only saves user value nothing else.
   def create
-    @review = Review.create(params[:review])
+    @review = Review.create(params[:review].merge(user_id: session[:user_id]))
     if @review.save
       redirect_to(root_path)
     else

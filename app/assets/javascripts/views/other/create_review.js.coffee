@@ -6,6 +6,7 @@ class Simplebudget.Views.CreateReview extends Backbone.View
     'submit #newReview': 'createReview'
 
   initialize: ->
+    @router = new Simplebudget.Routers.Home()
     @review = new Simplebudget.Models.Review()
     @model = new Simplebudget.Models.Session()
     @model.on('sync change', @render, this)
@@ -20,11 +21,13 @@ class Simplebudget.Views.CreateReview extends Backbone.View
 
   createReview: (event) ->
     event.preventDefault()
-    rating = rating: $('#rating').val()
-    body = body: $('#body').val()
-    user_id = user_id: $("#user_id").val()
-    @review.set({rating: @rating, body: @body, user_id: @user_id})
-    @review.save()
+    rating = $('#rating').val()
+    body = $('#body').val()
+    # user_id = $("#user_id").text()
+    if @review.save({rating: rating, body: body}, wait: true, error: @handleError)
+      @router.navigate('/reviews', {trigger: true})
+    else
+      @router.navigate('', {trigger: true})
   handleError: (entry, response) ->
     if response.status == 422
       errors = $.parseJSON(response.responseText).errors

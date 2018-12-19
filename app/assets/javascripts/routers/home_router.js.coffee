@@ -67,13 +67,13 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   createUser: (event) ->
     event.preventDefault()
-    username = username: $('#username').val()
-    email = email: $('#email').val()
-    password = password: $('#password').val()
-    phonenumber = phonenumnber: $('#phonenumber').val()
-    @view_signup.create username, email, password, phonenumber
+    username = $('#username').val()
+    email = $('#email').val()
+    password = $('#password').val()
+    phonenumber = $('#phonenumber').val()
+    @view_signup.create({username: username, email: email, password: password, phonenumber: phonenumber},
       wait: true
-      error: @handleError
+      error: @handleError)
 
   handleError: (entry, response) ->
     if response.status == 422
@@ -215,6 +215,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("#container-main").html(view.render().el)
+
 
 
 
