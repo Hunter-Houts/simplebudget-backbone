@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    render :json => Post.includes(:user,:comments).find(params[:id]), include: {user: {user: :username, user: :id}}
+    render :json => Post.includes(:user,:comments).find(params[:id]), include: {user: {user: :username, user: :id}, comments: {comments: :commentbody, comments: :comments}}
   end
 
   def create
