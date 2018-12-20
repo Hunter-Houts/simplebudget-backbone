@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   respond_to :json
 
-  # def params
-  #   request.parameters
-  # end]
+  def index
+    # render :json =>  User.includes(:account, :bills).all, include: {account: {account: :income, account: :bills}, bills: {bills: :name, bills: :amount}}
+    render :json => User.includes(:account,:bills).find(session[:user_id]), include: {account: {account: :income, account: :option}, bills: {bills: :name, bills: :amount}}
+  end
+
   def new
   end
 
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    render :json => User.includes(:account,:bills).find(params[:id]), include: {account: {account: :income, account: :option}, bills: {bills: :name, bills: :amount}}
   end
 
   private

@@ -13,8 +13,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'reviews' : 'reviews'
     'reviews/create': 'createReviewPage'
     'reviews/:id' : 'editReviewPage'
-  events:
-    'submit #new_signup': 'createUser'
+
 
 
   initialize: ->
@@ -54,7 +53,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("#container-main").html(view.render().el)
 
   signup: ->
-    view_signup = new Simplebudget.Views.UsersSignup()
+    view_signup = new Simplebudget.Views.UsersSignup(user: new Simplebudget.Models.User())
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("signup")
     $("body, html, footer").removeClass("reviewIndex")
@@ -69,21 +68,6 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body").removeClass("createPost")
     $("#container-main").html(view_signup.render().el)
 
-  createUser: (event) ->
-    event.preventDefault()
-    username = $('#username').val()
-    email = $('#email').val()
-    password = $('#password').val()
-    phonenumber = $('#phonenumber').val()
-    @view_signup.create({username: username, email: email, password: password, phonenumber: phonenumber},
-      wait: true
-      error: @handleError)
-
-  handleError: (entry, response) ->
-    if response.status == 422
-      errors = $.parseJSON(response.responseText).errors
-      for attribute, messages of errors
-        alert "#{attribute} #{message}" for message in messages
   profile: ->
     view = new Simplebudget.Views.Profile()
     $("footer").addClass("fixed-bottom")
