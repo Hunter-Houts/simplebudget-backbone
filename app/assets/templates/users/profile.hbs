@@ -1,38 +1,42 @@
 <div class="container-fluid">
 <div class="card color-white d-flex pl-2 flex-nowrap w-75 main-card">
-<h2 class="d-flex pl-2">{{users.username}}</h2>
+<h2 class="d-flex pl-2">{{user.username}}</h2>
     <div class="form-row">
         <div class="form-group pl-2 col-sm-8">
+        {{#if user.account}}
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null}">Your monthly income</h4>
         </div>
         <div class="form-group pl-2 col-sm-4">
-        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null}" id="monthlyIncome" th:text="'$' + ${#numbers.formatDecimal(account.getIncome(),1,2)}"></h4>
+        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null}" id="monthlyIncome" th:text="'$' + ${#numbers.formatDecimal(account.getIncome(),1,2)}">${{#toFixed user.account.income}}{{/toFixed}}</h4>
         </div>
+        {{/if}}
     </div>
-    <hr th:if="${bills.size() >= 1}"/>
+    {{#if user.bills}}
+    <hr>
 
-<h3 class="pl-2" th:if="${bills.size() >= 1}">Your bills</h3>
-<div th:each="bill : ${bills}">
+<h3 class="pl-2">Your bills</h3>
+{{#each user.bills}}
     <div class="form-row">
         <div class="form-group pl-2 col-sm-8">
-    <h4 class="d-flex flex-nowrap pl-2 text-capitalize" th:text="${bill.name} +': '"></h4>
+    <h4 class="d-flex flex-nowrap pl-2 text-capitalize" th:text="${bill.name} +': '">{{name}}: </h4>
         </div>
         <div class="form-group pl-2 col-sm-4">
-            <h4 class="d-flex pl-2 flex-nowrap" th:text="'$' + ${#numbers.formatDecimal(bill.amount,1,2)}"></h4>
-            <p style="display:none;" class="billAmount" th:text="${bill.amount}"></p>
-            <p style="display:none;" class="billName" th:text="${bill.name}"></p>
+            <h4 class="d-flex pl-2 flex-nowrap" th:text="'$' + ${#numbers.formatDecimal(bill.amount,1,2)}">${{#toFixed amount}}{{/toFixed}}</h4>
+            <p style="display:none;" class="billAmount" th:text="${bill.amount}">{{bill.name}}</p>
+            <p style="display:none;" class="billName" th:text="${bill.name}">{{bill.amount}}</p>
 
         </div>
     </div>
-</div>
-    <hr th:if="${bills.size() >= 1}"/>
+{{/each}}
+    <hr>
+    {{/if}}
     <div>
         <div class="form-row">
             <div class="form-group pl-2 col-sm-8">
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}">Total of your bills:</h4>
             </div>
             <div class="form-group pl-2 col-sm-4">
-        <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="billTotal" th:text="'$' + ${#numbers.formatDecimal(billTotal,1,2)}"></h4>
+        <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="billTotal" th:text="'$' + ${#numbers.formatDecimal(billTotal,1,2)}">${{billTotal}}</h4>
             </div>
         </div>
         <div class="form-row">
@@ -40,11 +44,11 @@
         <h4 class="pl-2" th:if="${billTotal > 0}">Money left over after your bills:</h4>
             </div>
             <div class="form-group pl-2 col-sm-4">
-        <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}"></h4>
+        <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}">${{#subtract user.account.income billTotal}}{{/subtract}}</h4>
             </div>
         </div>
         <hr th:if="${bills.size() >= 1}"/>
-        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/4,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/4,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'">You need to save ${{#divide billTotal 4}}{{/divide}} per paycheck to have enough to pay your bills by the end of the month</h4>
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/2,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal,1,2)}  + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="spendAmount"></h4>

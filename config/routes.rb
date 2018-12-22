@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :users
   resources :posts
+  resources :bills
   # resources :reviews
   root to: "main#index"
   # scope contraints: {format: /html/} do
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   post 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
-  get 'profile' => 'users#show'
+  get 'profile' => 'users#index'
   get 'posts' => 'posts#index'
   get 'reviews' => 'reviews#index'
   get 'reviews/create' => 'reviews#new'
