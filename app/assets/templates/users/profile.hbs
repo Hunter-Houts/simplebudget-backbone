@@ -1,6 +1,6 @@
 <div class="container-fluid">
 <div class="card color-white d-flex pl-2 flex-nowrap w-75 main-card">
-<h2 class="d-flex pl-2">{{user.username}}</h2>
+<h2 class="d-flex pl-2">Welcome, {{user.username}}</h2>
     <div class="form-row">
         <div class="form-group pl-2 col-sm-8">
         {{#if user.account}}
@@ -29,14 +29,14 @@
     </div>
 {{/each}}
     <hr>
-    {{/if}}
+
     <div>
         <div class="form-row">
             <div class="form-group pl-2 col-sm-8">
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}">Total of your bills:</h4>
             </div>
             <div class="form-group pl-2 col-sm-4">
-        <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="billTotal" th:text="'$' + ${#numbers.formatDecimal(billTotal,1,2)}">${{billTotal}}</h4>
+        <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="billTotal" th:text="'$' + ${#numbers.formatDecimal(billTotal,1,2)}">${{#toFixed billTotal}}{{/toFixed}}</h4>
             </div>
         </div>
         <div class="form-row">
@@ -47,14 +47,28 @@
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}">${{#subtract user.account.income billTotal}}{{/subtract}}</h4>
             </div>
         </div>
-        <hr th:if="${bills.size() >= 1}"/>
-        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/4,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'">You need to save ${{#divide billTotal 4}}{{/divide}} per paycheck to have enough to pay your bills by the end of the month</h4>
-        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/2,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+        <hr>
+        {{/if}}
+        {{#if user.bills}}
+        {{#if user.account}}
+        {{#ifEquals user.account.option 1}}
+        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 1 &amp;&amp; bills.size() >= 1}">You need to save ${{#divide billTotal 4}}{{/divide}} per paycheck to have enough to pay your bills by the end of the month</h4>
+        {{/ifEquals}}
+        {{#ifEquals user.account.option 2}}
+        <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 2 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal/2,1,2)} + ' per paycheck to have enough to pay your bills by the end of the month.'">You need to save ${{#divide billTotal 2}}{{/divide}} per paycheck to have enough to pay your bills by the end of the month</h4>
+        {{/ifEquals}}
+        {{#ifEquals user.account.option 3}}
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${account != null &amp;&amp; account.option == 3 &amp;&amp; bills.size() >= 1}"   th:text="'You need to save: ' + '$' + ${#numbers.formatDecimal(billTotal,1,2)}  + ' per paycheck to have enough to pay your bills by the end of the month.'"></h4>
+        {{/ifEquals}}
         <h4 class="d-flex pl-2 flex-nowrap" th:if="${billTotal > 0}" id="spendAmount"></h4>
-
+        {{/if}}
+        {{/if}}
+{{#ifEquals user.account nil}}
 <a href="/account-setup"><button class="btn ml-2" th:if="${account == null}">Setup Budget!</button></a>
+{{/ifEquals}}
+{{#if user.account}}
 <a href="/account-setup"><button class="btn ml-2" th:if="${account != null}">Edit Budget!</button></a>
+{{/if}}
 </div>
 </div>
 
