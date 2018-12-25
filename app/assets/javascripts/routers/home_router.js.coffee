@@ -83,6 +83,25 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
     $("#container-main").html(view.render().el)
+    setTimeout ( ->
+        # google.charts.load("visualization", "1,0", {'packages':['corechart']})
+        # google.charts.setOnLoadCallback(view.drawChart())
+        view.drawChart()
+        # LoadGoogle: ->
+        #   if typeof google != 'undefined' && google && google.load
+
+        #     google.load('current', {'callback':view.drawChart(),'packages':['corechart']})
+
+        #   else
+
+        #     setTimeout(LoadGoogle(), 30);
+
+
+
+        #   @LoadGoogle()
+
+
+        ), 50
 
   faq: ->
     view = new Simplebudget.Views.FAQ()
