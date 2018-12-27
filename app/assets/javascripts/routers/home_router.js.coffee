@@ -25,6 +25,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   index: ->
     view = new Simplebudget.Views.Home()
+    $("#createPost").hide()
     $("footer").removeClass("fixed-bottom")
     $("body, html, footer").removeClass("reviewIndex")
     $("body, footer").removeClass("postShow")
@@ -43,6 +44,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   login: ->
     view = new Simplebudget.Views.UsersIndex()
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("login")
     $("body, html, footer").removeClass("reviewIndex")
@@ -61,6 +63,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   signup: ->
     view_signup = new Simplebudget.Views.UsersSignup(user: new Simplebudget.Models.User())
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("signup")
     $("body, html, footer").removeClass("reviewIndex")
@@ -79,6 +82,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   profile: ->
     view = new Simplebudget.Views.Profile()
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body, html").addClass("profile")
     $("body, footer").removeClass("postShow")
@@ -116,6 +120,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   faq: ->
     view = new Simplebudget.Views.FAQ()
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").addClass("faq")
     $("body, footer").removeClass("postShow")
@@ -134,6 +139,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   supincome: ->
     view = new Simplebudget.Views.SupIncome()
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").addClass("supincome")
     $("body, html, footer").removeClass("reviewIndex")
@@ -152,6 +158,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   aboutteam: ->
     view = new Simplebudget.Views.Team()
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").removeClass("reviewIndex")
     $("body, html").removeClass("login")
@@ -170,6 +177,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   postIndex: ->
     view = new Simplebudget.Views.PostIndex(collection: @collection)
+    $("#createPost").show()
     $("footer").addClass("fixed-bottom")
     $("body, footer").addClass("postIndex")
     $("body, html, footer").removeClass("reviewIndex")
@@ -188,6 +196,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   showPost: (id) ->
     view = new Simplebudget.Views.PostShow({id: "#{id}"})
+    $("#createPost").show()
     $("footer").addClass("fixed-bottom")
     $("body, footer").addClass("postShow")
     $("body, html, footer").removeClass("reviewIndex")
@@ -206,6 +215,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   reviews: ->
     view = new Simplebudget.Views.ReviewIndex()
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body, html, footer").addClass("reviewIndex")
     $("body, footer").removeClass("postShow")
@@ -224,6 +234,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   createReviewPage: ->
     view_create_review = new Simplebudget.Views.CreateReview(review: new Simplebudget.Models.Review())
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body").addClass("createReview")
     $("body, html, footer").removeClass("reviewIndex")
@@ -243,6 +254,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   editReviewPage: (id) ->
     view = new Simplebudget.Views.ReviewEdit({id: "#{id}"})
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body").addClass("editReview")
     $("body, footer").removeClass("postShow")
@@ -261,6 +273,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   createPostPage: ->
     view_create_post = new Simplebudget.Views.CreatePost(post: new Simplebudget.Models.Post())
+    $("#createPost").show()
     $("footer").addClass("fixed-bottom")
     $("body").addClass("createPost")
     $("body").removeClass("createReview")
@@ -280,6 +293,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   createAccount: ->
     view = new Simplebudget.Views.AccountSetup()
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body").addClass("createAccount")
     $("body").removeClass("createPost")
@@ -299,6 +313,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
 
   editProfilePage: (id) ->
     view = new Simplebudget.Views.UserEdit({id: "#{id}"})
+    $("#createPost").hide()
     $("footer").addClass("fixed-bottom")
     $("body").addClass("editUser")
     $("body").removeClass("createAccount")
