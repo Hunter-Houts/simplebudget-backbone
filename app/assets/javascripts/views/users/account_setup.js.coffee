@@ -6,6 +6,7 @@ class Simplebudget.Views.AccountSetup extends Backbone.View
     'click #exampleRadios1': 'check1'
     'click #exampleRadios2': 'check2'
     'click #exampleRadios3': 'check3'
+    'submit #addBill': 'addBill'
 
   initialize: ->
     @router = new Simplebudget.Routers.Home()
@@ -33,23 +34,15 @@ class Simplebudget.Views.AccountSetup extends Backbone.View
     option1 = $('input[name=exampleRadios1]')
     option2 = $('input[name=exampleRadios2]')
     option3 = $('input[name=exampleRadios3]')
-    # user_id = $("#user_id").text()
-    console.log option1
-    console.log option2
-    console.log option3
-    console.log '---------------------'
-    console.log option1.is(":checked")
-    console.log option2.is(":checked")
-    console.log option3.is(":checked")
     if option1.is(':checked')
       if @account.save({income: monthlyIncome * 4, option: option1.val()}, wait: true, error: @handleError)
-        @router.navigate('/profile', {trigger: true})
+        window.location.href = '/profile'
     else if option2.is(':checked')
       if @account.save({income: monthlyIncome * 2, option: option2.val()}, wait: true, error: @handleError)
-        @router.navigate('/profile', {trigger: true})
+        window.location.href = '/profile'
     else if option3.is(':checked')
       if @account.save({income: monthlyIncome, option: option3.val()}, wait: true, error: @handleError)
-        @router.navigate('/profile', {trigger: true})
+        window.location.href = '/profile'
 
   handleError: (entry, response) ->
     if response.status == 422
@@ -68,6 +61,15 @@ class Simplebudget.Views.AccountSetup extends Backbone.View
     $("#exampleRadios3").attr("checked","checked")
     $("#exampleRadios2").removeAttr('checked')
     $("#exampleRadios1").removeAttr('checked')
+
+  addBill: (event) ->
+    event.preventDefault()
+    name = $('#billname').val()
+    amount = $('#billamount').val()
+    if @bill.save({name: name, amount: amount}, wait: true, error: @handleError)
+      @collection.add(@bill)
+      window.location.href = '/account-setup'
+
 
 
 

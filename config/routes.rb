@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   post '/account-setup' => 'accounts#create'
   put '/accounts' => 'accounts#update'
   post '/addBill' => 'bills#create'
+  get '/bills/:id' => redirect('/account-setup')
+  post '/bills/:id' => 'bills#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

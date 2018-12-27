@@ -6,7 +6,7 @@
 {{#if user.bills}}
 <h3 th:if="${bills.size() >= 1}">List of bills</h3>
 {{#each user.bills}}
-    <form action="/bills/{{id}}" method="post">
+    <form action="/bills/{{id}}" method="post" id="deleteBill">
         <div class="form-row">
         <div class="form-group col-sm-4 col-md-4">
     <h5 class="text-capitalize" th:text="${bill.name} + ': '">{{name}}: </h5>
@@ -23,7 +23,8 @@
 {{/each}}
 {{/if}}
 <div class="form-group">
-    <form action="/addBill" method="post">
+    <form action="/addBill" method="post" id="addBill">
+    <!--
         <div class="form-row">
             <div class="form-group col-sm-6 col-md-8">
             <label for="savings">Enter your monthly savings</label>
@@ -32,6 +33,7 @@
             <input class="form-control" id="savings" name="savings" type="number"/>
             </div>
         </div>
+    -->
         <h3 for="billname">Input your bills.. </h3>
         <div class="form-row">
             <div class="form-group col-sm-6 col-md-8">

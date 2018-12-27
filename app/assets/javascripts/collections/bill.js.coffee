@@ -6,4 +6,6 @@ class Simplebudget.Collections.Bills extends Backbone.Collection
   billTotal: 'billTotal'
 
   billTotal: ->
-    this.reduce((memo, value) -> value.get('amount'))
+    sum = 0
+    this.reduce((memo, value) -> sum += Number(value.get('amount')))
+    return sum

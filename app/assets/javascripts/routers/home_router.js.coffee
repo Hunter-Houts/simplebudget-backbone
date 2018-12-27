@@ -14,6 +14,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'reviews/create': 'createReviewPage'
     'reviews/:id' : 'editReviewPage'
     'account-setup': 'createAccount'
+    'bills': 'createAccount'
 
 
 
