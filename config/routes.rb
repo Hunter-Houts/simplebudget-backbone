@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'reviews/create' => 'reviews#new'
   post 'reviews' => 'reviews#create'
   get 'reviews/:id' => 'reviews#show'
-  post 'reviews/:id' => 'reviews#update'
+  put 'reviews/:id' => 'reviews#update'
   get 'posts/create' => 'posts#new'
   post 'posts/create' => 'posts#create'
   get '/account-setup' => 'accounts#new'
@@ -35,9 +35,8 @@ Rails.application.routes.draw do
   post '/addBill' => 'bills#create'
   get '/bills/:id' => redirect('/account-setup')
   post '/bills/:id' => 'bills#destroy'
-  # get '/users/:id' => 'users#show'
   patch '/users/:id' => 'users#update'
-  post '/users/:id' => 'users#update'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

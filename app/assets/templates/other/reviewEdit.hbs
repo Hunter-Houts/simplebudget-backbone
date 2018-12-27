@@ -4,7 +4,7 @@
     <form action='/reviews/{{Review.id}}' method="post" id="editReview">
     <div class="slidecontainer">
         <label class="editReview" for="rating">Rating</label>
-        <input type="range" min="1" max="5"  value ="1"  class = "slider" id="rating"/>
+        <input type="range" min="1" max="5"  value ="{{Review.rating}}"  class = "slider" id="rating"/>
     <span>Rating:</span>
         <span id="f">{{Review.rating}}</span>
     </div>

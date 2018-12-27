@@ -25,9 +25,9 @@ class Simplebudget.Views.CreateReview extends Backbone.View
     body = $('#body').val()
     # user_id = $("#user_id").text()
     if @review.save({rating: rating, body: body}, wait: true, error: @handleError)
-      @router.navigate('/reviews', {trigger: true})
+      window.location.href = '/reviews'
     else
-      @router.navigate('', {trigger: true})
+      window.location.href = '/'
   handleError: (entry, response) ->
     if response.status == 422
       errors = $.parseJSON(response.responseText).errors
