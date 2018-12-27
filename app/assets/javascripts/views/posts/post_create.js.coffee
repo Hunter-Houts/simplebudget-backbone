@@ -24,9 +24,9 @@ class Simplebudget.Views.CreatePost extends Backbone.View
     # user_id = $("#user_id").text()
     if @post.save({title: title, body: body}, wait: true, error: @handleError)
       @collection.add(@post)
-      @router.navigate('/posts', {trigger: true})
+      window.location.href = '/posts'
     else
-      @router.navigate('', {trigger: true})
+      window.location.href = '/'
   handleError: (entry, response) ->
     if response.status == 422
       errors = $.parseJSON(response.responseText).errors

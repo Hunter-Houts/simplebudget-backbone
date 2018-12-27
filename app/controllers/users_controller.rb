@@ -21,11 +21,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    render :json => User.includes(:account,:bills).find(params[:id]), include: {account: {account: :income, account: :option}, bills: {bills: :name, bills: :amount}}
+    render :json => User.find(params[:id])
+  end
+  def update
+    @user = User.update(params[:id],update_params)
+    if @user.update(update_params)
+      redirect_to(profile_path)
+    else
+      redirect_to(user_path)
+    end
   end
 
   private
   def user_params
+    params.permit(:username, :email, :password)
+  end
+  def update_params
     params.permit(:username, :email, :phonenumber, :password)
   end
 end

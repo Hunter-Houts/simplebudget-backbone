@@ -89,10 +89,8 @@
         <h3 class="d-flex pl-2 col-sm-12 userInfo">Username:</h3>
     <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.username}">{{user.username}}</h3>
         <h3 class="d-flex pl-2 col-sm-12 userInfo">Email:</h3>
-    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.email}">{{user.email}}</h3>
-        <h3  th:if="${user.phonenumber.length()>=1}" class="d-flex pl-2 col-sm-12 userInfo">Phonenumber:</h3>
-    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.phonenumber}">{{user.phonenumber}}</h3> <br/>
-    <a th:href="@{|/users/${#authentication.principal.id}/edit|}"><button class="btn profile ml-2 col-sm-12">Edit Profile</button></a>
+    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.email}">{{user.email}}</h3> <br>
+    <a href="/users/{{user.id}}"><button class="btn profile ml-2 col-sm-12">Edit Profile</button></a>
     </div>
 </div>
 </div>

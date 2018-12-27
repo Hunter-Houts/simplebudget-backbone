@@ -15,6 +15,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'reviews/:id' : 'editReviewPage'
     'account-setup': 'createAccount'
     'bills': 'createAccount'
+    'users/:id': 'editProfilePage'
 
 
 
@@ -36,6 +37,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, footer").removeClass("postIndex")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   login: ->
@@ -52,6 +55,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, footer").removeClass("postIndex")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   signup: ->
@@ -68,6 +73,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, footer").removeClass("postIndex")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view_signup.render().el)
 
   profile: ->
@@ -84,6 +91,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, footer").removeClass("postIndex")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
     setTimeout ( ->
         # google.charts.load("visualization", "1,0", {'packages':['corechart']})
@@ -119,6 +128,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, footer").removeClass("postIndex")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   supincome: ->
@@ -135,6 +146,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, footer").removeClass("postIndex")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   aboutteam: ->
@@ -151,6 +164,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").addClass("team")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   postIndex: ->
@@ -167,6 +182,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("team")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   showPost: (id) ->
@@ -183,6 +200,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("team")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   reviews: ->
@@ -199,6 +218,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("team")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   createReviewPage: ->
@@ -216,6 +237,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("team")
     $("body").removeClass("editReview")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view_create_review.render().el)
 
   editReviewPage: (id) ->
@@ -232,6 +255,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
 
   createPostPage: ->
@@ -249,6 +274,8 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body").removeClass("editReview")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
     $("#container-main").html(view_create_post.render().el)
 
   createAccount: ->
@@ -267,7 +294,29 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("supincome")
     $("body, html, footer").removeClass("team")
     $("body").removeClass("editReview")
+    $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
+
+  editProfilePage: (id) ->
+    view = new Simplebudget.Views.UserEdit({id: "#{id}"})
+    $("footer").addClass("fixed-bottom")
+    $("body").addClass("editUser")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("createPost")
+    $("body").removeClass("createReview")
+    $("body, html, footer").removeClass("reviewIndex")
+    $("body, footer").removeClass("postShow")
+    $("body, footer").removeClass("postIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
+    $("#container-main").html(view.render().el)
+
+
 
 
 
