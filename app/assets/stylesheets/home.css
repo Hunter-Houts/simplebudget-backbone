@@ -99,7 +99,7 @@ hr {
         height: 100%;
     }
 
-    .row{
+    .row.home{
         /*display: flex;*/
         /*-ms-flex-wrap: wrap;*/
         /*flex-wrap: wrap;*/
@@ -121,7 +121,7 @@ hr {
         height: 984px;
 
     }
-    .row{
+    .row.home{
         /*display: flex;*/
         /*-ms-flex-wrap: wrap;*/
         /*flex-wrap: wrap;*/
@@ -140,7 +140,7 @@ hr {
     body, html {
         height: 100%;
     }
-    .row{
+    .row.home{
         /*display: flex;*/
         /*-ms-flex-wrap: wrap;*/
         /*flex-wrap: wrap;*/
@@ -154,7 +154,7 @@ hr {
 
 }
 @media screen and (min-width: 1000px) {
-    .row {
+    .row.home {
         /*display: flex;*/
         /*-ms-flex-wrap: wrap;*/
         /*flex-wrap: wrap;*/
