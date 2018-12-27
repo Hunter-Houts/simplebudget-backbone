@@ -9,6 +9,8 @@ window.Simplebudget =
 # Handlebar helpers start
 Handlebars.registerHelper 'ifEquals', (arg1, arg2, options) ->
   if arg1 == arg2 then options.fn(this) else options.inverse(this)
+Handlebars.registerHelper 'notEquals', (arg1, arg2, options) ->
+  if arg1 != arg2 then options.fn(this) else options.inverse(this)
 Handlebars.registerHelper 'Greater', (v1, v2, options) ->
   if v1 > v2
     return options.fn(this)

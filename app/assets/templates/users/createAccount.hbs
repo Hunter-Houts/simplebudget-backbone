@@ -1,0 +1,129 @@
+<div class="container-fluid">
+<div class="card d-flex flex-nowrap" id="main-card">
+<h1 class="d-flex flex-nowrap">Setup your Budget</h1>
+<h2 class="d-flex flex-nowrap">Budget Yourself!</h2>
+<br/>
+{{#if user.bills}}
+<h3 th:if="${bills.size() >= 1}">List of bills</h3>
+{{#each user.bills}}
+    <form action="/bills/{{id}}" method="post">
+        <div class="form-row">
+        <div class="form-group col-sm-4 col-md-4">
+    <h5 class="text-capitalize" th:text="${bill.name} + ': '">{{name}}: </h5>
+        </div>
+            <div class="form-group col-sm-4 col-md-4">
+                <h5 th:text="'$' + ${#numbers.formatDecimal(bill.amount,1,2)}">{{#toFixed amount}}{{/toFixed}}</h5>
+        </div>
+        <div class="form-group col-sm-4 col-md-4">
+        <input class="btn" type="submit"  value="Remove"/>
+        </div>
+        </div>
+    </form>
+
+{{/each}}
+{{/if}}
+<div class="form-group">
+    <form action="/addBill" method="post">
+        <div class="form-row">
+            <div class="form-group col-sm-6 col-md-8">
+            <label for="savings">Enter your monthly savings</label>
+            </div>
+            <div class="form-group col-sm-6 col-md-4">
+            <input class="form-control" id="savings" name="savings" type="number"/>
+            </div>
+        </div>
+        <h3 for="billname">Input your bills.. </h3>
+        <div class="form-row">
+            <div class="form-group col-sm-6 col-md-8">
+                <label for="billname">Enter the bill name here</label>
+            </div>
+            <div class="form-group col-sm-6 col-md-4">
+            <input class="form-control" id="billname" name="billname"/>
+            </div>
+        </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6 col-md-8">
+        <label for="billamount">Enter the bill amount here</label>
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                <input class="form-control" id="billamount" name="billamount"/>
+                </div>
+            </div>
+        <br/>
+        <input class="btn" type="submit" formaction= "/addBill" formmethod="post" value="Add Bill"/>
+    </form>
+</div>
+<form action="/account-setup" method="POST" id="createAccountForm">
+    <div class="form-row">
+        <div class="form-group col-sm-6 col-md-8">
+            <label for="monthlyincome">Enter Your Income Amount Each Paycheck</label>
+        </div>
+        <div class="form-group col-sm-6 col-md-4">
+        {{#ifEquals user.account.option 1}}
+        <input th:if="${account != null &amp;&amp; account.option == 1}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" value="{{#divide user.account.income 4}}{{/divide}}"/>
+        {{/ifEquals}}
+        {{#ifEquals user.account.option 2}}
+        <input th:if="${account != null &amp;&amp; account.option == 2}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" value="{{#divide user.account.income 2}}{{/divide}}"/>
+        {{/ifEquals}}
+        {{#ifEquals user.account.option 3}}
+        <input th:if="${account != null &amp;&amp; account.option == 3}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$" value="{{#toFixed user.account.income}}{{/toFixed}}"/>
+        {{/ifEquals}}
+        {{#ifEquals user.account nil}}
+        <input th:if="${account == null}" class="form-control" id="monthlyincome" name="monthlyincome" placeholder="$"/>
+        {{/ifEquals}}
+        </div>
+    </div>
+
+        <ul class="list-group list-group-flush">
+            <li style="background-color: #343a40;"  class="list-group-item"><div class="form-check">
+            {{#ifEquals user.account.option 1}}
+                <input th:if="${account != null &amp;&amp; account.option == 1}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1" checked="checked"/>
+            {{/ifEquals}}
+            {{#notEquals user.account.option 1}}
+                <input th:if="${account != null &amp;&amp; account.option != 1}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1"/>
+            {{/notEquals}}
+            {{#ifEquals user.account nil}}
+                <input th:if="${account == null}"  class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1"/>
+            {{/ifEquals}}
+                <label class="form-check-label" for="exampleRadios1">
+                    Weekly
+                </label>
+            </div></li>
+            <li style="background-color: #343a40;"  class="list-group-item"><div class="form-check">
+            {{#ifEquals user.account.option 2}}
+                <input th:if="${account != null &amp;&amp; account.option == 2}" class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios2" value="2" checked="checked"/>
+            {{/ifEquals}}
+            {{#notEquals user.account.option 2}}
+                <input th:if="${account != null &amp;&amp; account.option != 2}" class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios2" value="2"/>
+            {{/notEquals}}
+            {{#ifEquals user.account nil}}
+                <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios2" value="2"/>
+            {{/ifEquals}}
+
+                <label class="form-check-label" for="exampleRadios2">
+                    Bi-weekly
+                </label>
+            </div></li>
+            <li style="background-color: #343a40;"  class="list-group-item"><div class="form-check">
+            {{#ifEquals user.account.option 3}}
+                <input th:if="${account != null &amp;&amp; account.option == 3}" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="3" checked="checked"/>
+            {{/ifEquals}}
+            {{#notEquals user.account.option 3}}
+                <input th:if="${account != null &amp;&amp; account.option != 3}" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="3"/>
+            {{/notEquals}}
+
+            {{#ifEquals user.account nil}}
+                <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="3"/>
+            {{/ifEquals}}
+                <label class="form-check-label" for="exampleRadios3">
+                    Monthly
+                </label>
+            </div></li>
+        </ul>
+<br/>
+    <input class="btn" value="Budget Yourself!!" type="submit" />
+</form>
+</div>
+</div>
+<br/>
+<br/>

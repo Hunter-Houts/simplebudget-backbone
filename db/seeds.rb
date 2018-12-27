@@ -10,6 +10,5 @@ test_post = Post.create!(id: 1, title: "test post", body: "please ignore", user_
 test_post = Post.create!(id: 2, title: "test post 2", body: "please ignore again", user_id: user_test.id)
 review_test = Review.create!(id:1, body: "test review", rating: 5, user_id: user_test.id)
 test_account = Account.create!(id:1, income: 2000, option: 1, user_id: user_test.id)
-bills_test = Bill.create!(id:1, name: 'test', amount: 100.00, user_id: user_test.id, account_id: test_account.id)
-test_account.bills << bills_test
+bills_test = Bill.create!(id:1, name: 'test', amount: 100.00, user_id: user_test.id)
 

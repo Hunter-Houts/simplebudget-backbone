@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<div class="card color-white d-flex pl-2 flex-nowrap w-75 main-card">
+<div class="card color-white d-flex pl-2 flex-nowrap w-75 profile main-card">
 <h2 class="d-flex pl-2">Welcome, {{user.username}}</h2>
     <div class="form-row">
         <div class="form-group pl-2 col-sm-8">
@@ -64,10 +64,10 @@
         {{/if}}
         {{/if}}
 {{#ifEquals user.account nil}}
-<a href="/account-setup"><button class="btn ml-2" th:if="${account == null}">Setup Budget!</button></a>
+<a href="/account-setup"><button class="btn profile ml-2" th:if="${account == null}">Setup Budget!</button></a>
 {{/ifEquals}}
 {{#if user.account}}
-<a href="/account-setup"><button class="btn ml-2" th:if="${account != null}">Edit Budget!</button></a>
+<a href="/account-setup"><button class="btn profile ml-2" th:if="${account != null}">Edit Budget!</button></a>
 {{/if}}
 </div>
 </div>
@@ -75,21 +75,24 @@
 
 
 
-
+{{#if user.bills}}
 <div th:if="${bills.size() >= 1}" id="piechartsize" class="pchartclass pl-2 card d-flex w-75">
 <div th:if="${bills.size() >= 1}" id="piechart" class="pl-2"></div>
 </div>
-<div class="card d-flex w-75" id="main-card1">
+{{/if}}
+<div class="card d-flex w-75 profile" id="main-card1">
     <div class="row mb-5">
-        <a th:if="${bills.size() >= 1}" href="/piechart"><button th:if="${bills.size() >= 1}" class="pl-2 btn mb-2 col-sm-12">Fullscreen Chart</button></a>
+        {{#if user.bills}}
+        <a th:if="${bills.size() >= 1}" href="/piechart"><button th:if="${bills.size() >= 1}" class="pl-2 btn profile mb-2 col-sm-12">Fullscreen Chart</button></a>
+        {{/if}}
     <h2 class="d-flex pl-2 col-sm-12 userInfo3">User information</h2>
         <h3 class="d-flex pl-2 col-sm-12 userInfo">Username:</h3>
-    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.username}"></h3>
+    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.username}">{{user.username}}</h3>
         <h3 class="d-flex pl-2 col-sm-12 userInfo">Email:</h3>
-    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.email}"></h3>
+    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.email}">{{user.email}}</h3>
         <h3  th:if="${user.phonenumber.length()>=1}" class="d-flex pl-2 col-sm-12 userInfo">Phonenumber:</h3>
-    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.phonenumber}"></h3> <br/>
-    <a th:href="@{|/users/${#authentication.principal.id}/edit|}"><button class="btn ml-2 col-sm-12">Edit Profile</button></a>
+    <h3 class="d-flex pl-2 col-sm-12 userInfo2" th:text="${user.phonenumber}">{{user.phonenumber}}</h3> <br/>
+    <a th:href="@{|/users/${#authentication.principal.id}/edit|}"><button class="btn profile ml-2 col-sm-12">Edit Profile</button></a>
     </div>
 </div>
 </div>

@@ -16,10 +16,8 @@ ActiveRecord::Schema.define(version: 2018_12_11_144034) do
     t.decimal "income", precision: 64, scale: 12
     t.integer "option"
     t.integer "user_id"
-    t.integer "bill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bill_id"], name: "index_accounts_on_bill_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -27,10 +25,8 @@ ActiveRecord::Schema.define(version: 2018_12_11_144034) do
     t.string "name"
     t.decimal "amount", precision: 64, scale: 12
     t.integer "user_id"
-    t.integer "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["account_id"], name: "index_bills_on_account_id"
     t.index ["user_id"], name: "index_bills_on_user_id"
   end
 

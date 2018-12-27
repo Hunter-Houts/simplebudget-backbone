@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :bills
+  resources :accounts
   # resources :reviews
   root to: "main#index"
   # scope contraints: {format: /html/} do
@@ -28,6 +29,10 @@ Rails.application.routes.draw do
   post 'reviews/:id' => 'reviews#update'
   get 'posts/create' => 'posts#new'
   post 'posts/create' => 'posts#create'
+  get '/account-setup' => 'accounts#new'
+  post '/account-setup' => 'accounts#create'
+  put '/accounts' => 'accounts#update'
+  post '/addBill' => 'bills#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

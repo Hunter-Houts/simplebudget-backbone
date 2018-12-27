@@ -13,6 +13,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'reviews' : 'reviews'
     'reviews/create': 'createReviewPage'
     'reviews/:id' : 'editReviewPage'
+    'account-setup': 'createAccount'
 
 
 
@@ -249,6 +250,23 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body").removeClass("editReview")
     $("#container-main").html(view_create_post.render().el)
 
+  createAccount: ->
+    view = new Simplebudget.Views.AccountSetup()
+    $("footer").addClass("fixed-bottom")
+    $("body").addClass("createAccount")
+    $("body").removeClass("createPost")
+    $("body").removeClass("createReview")
+    $("body, html, footer").removeClass("reviewIndex")
+    $("body, footer").removeClass("postShow")
+    $("body, footer").removeClass("postIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
+    $("#container-main").html(view.render().el)
 
 
 
