@@ -26,6 +26,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    respond_with Post.destroy(params[:id])
+    if Post.destroy(params[:id])
+      redirect_to(posts_path)
+    end
   end
 end

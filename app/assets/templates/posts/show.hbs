@@ -18,7 +18,7 @@
        <input class="btn postShow btn-outline-secondary w-50 custom-width" type='submit'/> </div> </form>
     {{/if}}
     {{#ifEquals current_user.id post.user.id}}
-<a href='/posts/{{id}}/edit'><button class="btn postShow btn-outline-secondary w-50 custom-width">Edit Post</button><br/></a>
+<a href='/posts/{{post.id}}/edit'><button class="btn postShow btn-outline-secondary w-50 custom-width">Edit Post</button><br/></a>
     {{/ifEquals}}
     <!-- Checking if loggedin -->
     {{#if current_user.id}}
