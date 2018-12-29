@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :bills
   resources :accounts
+  resources :comments
   # resources :reviews
   root to: "main#index"
   # scope contraints: {format: /html/} do
@@ -39,6 +40,12 @@ Rails.application.routes.draw do
   get '/bills/:id' => redirect('/account-setup')
   post '/bills/:id' => 'bills#destroy'
   patch '/users/:id' => 'users#update'
+  get 'comments/:id/replies' => 'comments#index'
+  get 'comments' => 'comments#new'
+  post 'comments' => 'comments#create'
+  post 'comments/:id' => 'comments#update'
+  post 'comments/:id/delete' => 'comments#destroy'
+  post 'reply/:comment_id/:post_id' => 'comments#reply'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

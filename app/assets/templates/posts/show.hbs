@@ -8,7 +8,7 @@
         <p class="card-text d-flex flex-nowrap">{{post.body}}</p>
     </div>
     {{#if current_user.id}}
-<form  style="display: none;" action='/comment/{{id}}' method='post' id="commentForm">
+<form  style="display: none;" action="/comments" method='post' id="commentForm">
     <div class='form-group'>
         <div class='form-group input-width pr-4'>
            <label for='comment'>Comment:</label>
@@ -26,33 +26,41 @@
 {{/if}}
 {{#if post.comments}}
 <ul>
-    {{#each post.comments}}
+    {{#each comments}}
     <li style="list-style-type: none;">
         <div class="card d-flex flex-nowrap postShow">
             <div class="card-header d-flex flex-nowrap">
-                <span th:text="'Posted By: ' + ${comment.user.username}"></span>
+                <span th:text="'Posted By: ' + ${comment.user.username}">Posted by: {{user.username}}</span>
             </div>
             <div class="card-body">
-                <p class="card-text d-flex flex-nowrap" th:text="${comment.commentbody}"></p>
+                <p class="card-text d-flex flex-nowrap" th:text="${comment.commentbody}">{{commentbody}}</p>
             </div>
-            <button  th:if="${comment != null}" sec:authorize='isAuthenticated()' class="showReply btn postShow btn-outline-secondary w-50 custom-width">Reply</button> <br/> <button th:if="${loggedInUser.id == comment.user.id}" class="editComment btn postShow btn-outline-secondary w-50 custom-width mt-0">Edit</button>
-            <form th:if="${loggedInUser.id == comment.user.id}" style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editForm">
+            {{#if ../current_user.id}}
+            <button  th:if="${comment != null}" sec:authorize='isAuthenticated()' class="showReply btn postShow btn-outline-secondary w-50 custom-width">Reply</button> <br/>
+            {{/if}}
+            {{#ifEquals ../current_user.id user.id}}
+            <button th:if="${loggedInUser.id == comment.user.id}" class="editComment btn postShow btn-outline-secondary w-50 custom-width mt-0">Edit</button>
+            <form style="display: none;" action="/comments/{{id}}" method='POST' id="editForm" class="editForm">
                 <div class='form-group'>
                     <div class='form-group input-width pr-4'>
                         <label for='edit'>Edit:</label>
-                        <textarea class='form-control' rows='4' cols='50' id="edit" name="commentedit" th:text="${comment.commentbody}" required="required"></textarea>
+                        <textarea class='form-control' rows='4' cols='50' id="edit" name="commentbody" th:text="${comment.commentbody}" required="required">{{commentbody}}</textarea>
                         <br/>
                     </div>
-                    <input class="btn postShow btn-outline-secondary w-50 custom-width" type='submit'/> <br/> <input class="btn postShow btn-outline-secondary w-50 custom-width" type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
+                    </div>
+                    <input class="btn postShow btn-outline-secondary w-50 custom-width" type='submit'/>
+            </form> <br/>
+                    <form style="display:none;" action='/comments/{{id}}/delete' method='POST' class="deleteComment">
+                        <input class="btn postShow btn-outline-secondary w-50 custom-width" type="submit" value="Delete"/>
+                    </form>
 
-                </div>
-
-            </form>
-            <form  style="display: none;" th:action='|/reply/${comment.id}|' th:method='post' sec:authorize='isAuthenticated()' class="replyForm">
+            {{/ifEquals}}
+            <form  style="display: none;" action='/reply/{{id}}/{{../post.id}}' method='post' sec:authorize='isAuthenticated()' class="replyForm">
+                <span id="commentId" style="display:none">{{id}}</span>
                 <div class='form-group'>
                     <div class='form-group input-width pr-4'>
                         <label for='reply'>Reply:</label>
-                        <textarea class='form-control' rows='4' cols='50' id="reply" name="commentreply" required="required"></textarea>
+                        <textarea class='form-control' rows='4' cols='50' id="reply" name="commentbody" required="required"></textarea>
                         <br/>
                     </div>
                     <input class="btn postShow btn-outline-secondary w-50 custom-width" type='submit'/>
@@ -60,14 +68,16 @@
                 </div>
 
             </form>
+            {{#if replies}}
             <ul>
+            {{#each replies}}
                 <li style="list-style-type: none;" th:each="comment : ${comment.comments}">
                     <div class="card d-flex flex-nowrap postShow">
                         <div class="card-header d-flex flex-nowrap">
-                            <span th:text="'Posted By: ' + ${comment.user.username}"></span>
+                            <span th:text="'Posted By: ' + ${comment.user.username}">Posted by: {{user.username}}</span>
                         </div>
                         <div class="card-body">
-                            <p class="card-text d-flex flex-nowrap" th:text="${comment.commentbody}"></p>
+                            <p class="card-text d-flex flex-nowrap" th:text="${comment.commentbody}">{{commentbody}}</p>
                         </div>
                     </div>
                     <button th:if="${loggedInUser.id == comment.user.id}" class="editReply btn postShow btn-outline-secondary w-50 custom-width1">Edit</button>
@@ -84,7 +94,9 @@
 
                     </form>
                 </li>
+                {{/each}}
             </ul>
+            {{/if}}
         </div>
     </li>
     {{/each}}
