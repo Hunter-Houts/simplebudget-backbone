@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   post 'comments/:id' => 'comments#update'
   post 'comments/:id/delete' => 'comments#destroy'
   post 'reply/:comment_id/:post_id' => 'comments#reply'
+  post 'reply/:id/:post_id/edit' => 'comments#update'
+  post 'reply/:id/:post_id/delete' => 'comments#destroy'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

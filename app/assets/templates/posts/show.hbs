@@ -68,9 +68,11 @@
                 </div>
 
             </form>
-            {{#if replies}}
+
             <ul>
-            {{#each replies}}
+
+            {{#each ../replies}}
+            {{#ifEquals ../id comment_id}}
                 <li style="list-style-type: none;" th:each="comment : ${comment.comments}">
                     <div class="card d-flex flex-nowrap postShow">
                         <div class="card-header d-flex flex-nowrap">
@@ -80,23 +82,30 @@
                             <p class="card-text d-flex flex-nowrap" th:text="${comment.commentbody}">{{commentbody}}</p>
                         </div>
                     </div>
+                    {{#ifEquals ../../current_user.id user_id}}
                     <button th:if="${loggedInUser.id == comment.user.id}" class="editReply btn postShow btn-outline-secondary w-50 custom-width1">Edit</button>
-                    <form  th:if="${loggedInUser.id == comment.user.id}" style="display: none;" th:action='|/comment/${comment.id}/edit|' th:method='post' sec:authorize='isAuthenticated()' class="editReplyForm">
+                    <form style="display: none;" action='/reply/{{id}}/{{../../post.id}}/edit' method='post' class="editReplyForm">
                         <div class='form-group'>
                             <div class='form-group input-width1 pr-4'>
-                                <label for='edit'>Edit:</label>
-                                <textarea class='form-control' rows='4' cols='50' id="edit" name="commentedit" th:text="${comment.commentbody}" required="required"></textarea>
+                                <label for='replyedit'>Edit:</label>
+                                <textarea class='form-control' rows='4' cols='50' id="replyedit" name="commentbody" th:text="${comment.commentbody}" required="required">{{commentbody}}</textarea>
                                 <br/>
                             </div>
-                            <input class="btn postShow btn-outline-secondary w-50 custom-width1" type='submit'/> <br/> <input class="btn postShow btn-outline-secondary w-50 custom-width1" type="submit" th:formmethod="post" th:formaction="|/comment/${comment.id}/delete|" value="Delete"/>
+                            <input class="btn postShow btn-outline-secondary w-50 custom-width1" type='submit'/> </form><br/>
+                            <form action='/reply/{{id}}/{{../../post.id}}/delete' method='post'>
+                                <input class="btn postShow btn-outline-secondary w-50 custom-width1" type="submit" value="Delete"/>
+                            </form>
 
                         </div>
 
                     </form>
+                    {{/ifEquals}}
                 </li>
+                {{/ifEquals}}
                 {{/each}}
+
             </ul>
-            {{/if}}
+
         </div>
     </li>
     {{/each}}

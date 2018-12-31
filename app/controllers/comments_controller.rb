@@ -9,11 +9,11 @@ class CommentsController < ApplicationController
   end
 
   def index
-    respond_with Comment.includes(:user).where(post_id: params[:id]).where.not(comment_id:  nil), include: {user: {user: :username}}
+    respond_with Comment.includes(:user).where(post_id: params[:id]).where.not(comment_id: nil), include: {user: {user: :username}}
   end
 
   def show
-    respond_with Comment.includes(:user).where(post_id: params[:id]), include: {user: {user: :username, user: :id}}
+    respond_with Comment.includes(:user).where(post_id: params[:id]).where(comment_id: nil), include: {user: {user: :username, user: :id}}
   end
 
   def create
@@ -21,7 +21,9 @@ class CommentsController < ApplicationController
   end
 
   def reply
-    respond_with Comment.create(reply_params.merge(user_id: session[:user_id]))
+    if Comment.create(reply_params.merge(user_id: session[:user_id]))
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update

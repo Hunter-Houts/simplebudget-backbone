@@ -7,6 +7,7 @@ class Simplebudget.Views.PostShow extends Backbone.View
     'submit #commentForm': 'createComment'
     'click .editComment': 'showCommentEdit'
     'click .showReply': 'showReplyForm'
+    'click .editReply': 'showReplyEditForm'
 
 
   initialize: ->
@@ -26,7 +27,7 @@ class Simplebudget.Views.PostShow extends Backbone.View
     @session.fetch()
 
   render: ->
-    $(@el).html(@template(post: @model.toJSON(), current_user: @session.toJSON(), comments: @comments.toJSON()))
+    $(@el).html(@template(post: @model.toJSON(), current_user: @session.toJSON(), comments: @comments.toJSON(), replies: @replies.toJSON()))
     this
 
   showCommentForm: (event) ->
@@ -75,4 +76,13 @@ class Simplebudget.Views.PostShow extends Backbone.View
     commentId = $("#commentId").text()
     if @reply.save({commentbody: reply, post_id: @model.id, comment_id: Number(commentId)}, wait: true, error: @handleError)
       window.location.href = '/posts/' + @model.id
+
+  showReplyEditForm: (event) ->
+    event.preventDefault()
+    editReply = Array.from(document.getElementsByClassName("editReply"))
+    editReplyForm = Array.from(document.getElementsByClassName("editReplyForm"))
+    editReply.forEach((element, index) ->
+      element.addEventListener('click', (e) ->
+        e.preventDefault()
+        editReplyForm[index].style.display = "block"))
 
