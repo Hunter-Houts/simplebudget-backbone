@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_username(params[:username])
     if @user && @user.authenticate(params[:password])
+      @review = Review.find_by_user_id(@user.id)
+      session[:review_id] ||= @review.id
       session[:user_id] = @user.id
       return redirect_to(profile_path)
     else

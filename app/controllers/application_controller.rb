@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   include ActionController::MimeResponds
   helper_method :current_user
+  helper_method :has_review
   # before_action :coerce_json
 
   # def coerce_json
@@ -22,6 +23,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def has_review
+    @has_review ||= Review.find_by_user_id(session[:user_id]) if session[:user_id]
   end
 
   def require_user

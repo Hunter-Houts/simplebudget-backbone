@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   def params
     request.parameters
   end
-  # TODO: Fix problem when directly going to /reviews in url
+
   def index
     respond_with Review.includes(:user).all, include: {user: {only: :username}}
   end
@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
     # @current_user = User.find(session[:user_id])
     # @review = Review.find_by_user_id(current_user.id)
     # if @review
+    @review = Review.find(params[:id])
       render :json => Review.find(params[:id])
     # else
     #   redirect_to(root_path)

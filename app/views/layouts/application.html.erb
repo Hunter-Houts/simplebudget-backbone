@@ -44,7 +44,11 @@
         <a class="nav-item nav-link active" href="/posts"><i class="fas fa-clipboard"></i> Community</a>
         <a class="nav-item nav-link active navlink-custom" href="/posts/create" id="createPost" style="display:none"><i class="fas fa-paste"></i> Create Post</a>
         <a class="nav-item nav-link active" href="/profile"><i class="fas fa-user"></i> Your Profile</a>
+        <% if not has_review %>
         <a class="nav-item nav-link active" href="/reviews/create"><i class="fas fa-star"></i> Leave a Review</a>
+        <% else %>
+        <a class="nav-item nav-link active" href='/reviews/<%= has_review.id%>'><i class="fas fa-star"></i> Edit Review</a>
+        <% end %>
         <form action="/logout" method="POST">
            <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
