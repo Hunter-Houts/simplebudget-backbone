@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   respond_to :json
 
   def index
-    # render :json =>  User.includes(:account, :bills).all, include: {account: {account: :income, account: :bills}, bills: {bills: :name, bills: :amount}}
-    render :json => User.includes(:account,:bills).find(session[:user_id]), include: {account: {account: :income, account: :option}, bills: {bills: :name, bills: :amount}}
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if !@current_user
+      redirect_to login_path
+    else
+      render :json => User.includes(:account,:bills).find(session[:user_id]), include: {account: {account: :income, account: :option}, bills: {bills: :name, bills: :amount}}
+    end
   end
 
   def new
@@ -21,14 +25,30 @@ class UsersController < ApplicationController
   end
 
   def show
-    render :json => User.find(params[:id])
+    @current_user = User.find(session[:user_id])
+    @user = User.find(params[:id])
+    if @user.id != @current_user.id
+      redirect_to(root_path)
+    else
+      render :json => User.find(params[:id])
+    end
   end
   def update
-    @user = User.update(params[:id],update_params)
-    if @user.update(update_params)
-      redirect_to(profile_path)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @user = User.find(params[:id])
+    if @current_user
+      if @user.id == @current_user.id
+        @user = User.update(params[:id],update_params)
+        if @user.update(update_params)
+        redirect_to(profile_path)
+        else
+          redirect_to(user_path)
+        end
+      else
+        redirect_to(login_path)
+      end
     else
-      redirect_to(user_path)
+      redirect_to(login_path)
     end
   end
 

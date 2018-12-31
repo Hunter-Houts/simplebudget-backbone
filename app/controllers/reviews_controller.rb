@@ -10,30 +10,38 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    # @current_user = User.find(session[:user_id])
-    # @review = Review.find_by_user_id(current_user.id)
-    # if @review
+    @current_user = User.find(session[:user_id])
     @review = Review.find(params[:id])
+    if @review.user.id == @current_user.id
       render :json => Review.find(params[:id])
-    # else
-    #   redirect_to(root_path)
-    # end
+    else
+      redirect_to(root_path)
+    end
   end
 
   def new
   end
 
   def create
-    @review = Review.create(params[:review].merge(user_id: session[:user_id]))
-    if @review.save
-      redirect_to(root_path)
-    else
-      redirect_to(reviews_path)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_user
+      @review = Review.create(params[:review].merge(user_id: session[:user_id]))
+      if @review.save
+        redirect_to(root_path)
+      else
+        redirect_to(reviews_path)
+      end
     end
   end
 
   def update
-    respond_with Review.update(params[:id], params[:review])
+    @current_user = User.find(session[:user_id])
+    @review = Review.find(params[:id])
+    if @review.user.id == @current_user.id
+      respond_with Review.update(params[:id], params[:review])
+    else
+      redirect_to(root_path)
+    end
   end
 
   def destroy

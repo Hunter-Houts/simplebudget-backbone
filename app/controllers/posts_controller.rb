@@ -18,16 +18,33 @@ class PostsController < ApplicationController
   end
 
   def create
-    respond_with Post.create(params[:post].merge(user_id: session[:user_id]))
+    @current_user = User.find(session[:user_id])
+    if @current_user
+      respond_with Post.create(params[:post].merge(user_id: session[:user_id]))
+    else
+      redirect_to(root_path)
+    end
   end
 
   def update
-    respond_with Post.update(params[:id], params[:post])
+    @current_user = User.find(session[:user_id])
+    @post = Post.find(params[:id])
+    if @post.user.id == @current_user.id
+      respond_with Post.update(params[:id], params[:post])
+    else
+      redirect_to(root_path)
+    end
   end
 
   def destroy
-    if Post.destroy(params[:id])
-      redirect_to(posts_path)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @post = Post.find(params[:id])
+    if @post.user.id == @current_user.id
+      if Post.destroy(params[:id])
+        redirect_to(posts_path)
+      end
+    else
+      redirect_to(root_path)
     end
   end
 end

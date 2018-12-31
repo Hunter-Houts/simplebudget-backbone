@@ -17,6 +17,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'account-setup': 'createAccount'
     'bills': 'createAccount'
     'users/:id': 'editProfilePage'
+    '*path' : 'notFound'
 
 
 
@@ -351,6 +352,12 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body, html, footer").removeClass("team")
     $("body").removeClass("editReview")
     $("#container-main").html(view.render().el)
+
+  notFound: (path) ->
+    alert("Invalid Path: " + path)
+    window.location.href = '/'
+
+
 
 
 

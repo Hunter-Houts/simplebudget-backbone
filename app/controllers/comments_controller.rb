@@ -17,24 +17,54 @@ class CommentsController < ApplicationController
   end
 
   def create
-    respond_with Comment.create(comment_params.merge(user_id: session[:user_id]))
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_user
+      respond_with Comment.create(comment_params.merge(user_id: session[:user_id]))
+    else
+      redirect_to(login_path)
+    end
   end
 
   def reply
-    if Comment.create(reply_params.merge(user_id: session[:user_id]))
-      redirect_back(fallback_location: root_path)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_user
+      if Comment.create(reply_params.merge(user_id: session[:user_id]))
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      redirect_to(login_path)
     end
   end
 
   def update
-    if Comment.update(params[:id],update_params)
-      redirect_back(fallback_location: root_path)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @comment = Comment.find(params[:id])
+    if @current_user
+      if @comment.user.id == @current_user.id
+        if Comment.update(params[:id],update_params)
+        redirect_back(fallback_location: root_path)
+        end
+      else
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      redirect_to(login_path)
     end
   end
 
   def destroy
-    if Comment.destroy(params[:id])
-      redirect_back(fallback_location: root_path)
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @comment = Comment.find(params[:id])
+    if @current_user
+      if @current_user.id == @comment.user.id
+        if Comment.destroy(params[:id])
+          redirect_back(fallback_location: root_path)
+        end
+      else
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      redirect_to(login_path)
     end
   end
 

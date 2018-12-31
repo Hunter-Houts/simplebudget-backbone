@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   include ActionController::MimeResponds
   helper_method :current_user
   helper_method :has_review
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found_errors
   # before_action :coerce_json
 
   # def coerce_json
@@ -20,7 +21,10 @@ class ApplicationController < ActionController::Base
   #     request.format = 'json'
   #   end
   # end
-
+  def not_found_errors(exception)
+    raise ActionController::RoutingError.new('Not Found')
+    redirect_to(root_path)
+  end
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
