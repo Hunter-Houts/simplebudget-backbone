@@ -70,7 +70,7 @@
 body{
     height: 100%;
 }
-#main-card {
+#main-card.home {
     background-color: #343a40;
     color: white;
     width: 50%;
@@ -163,7 +163,7 @@ hr {
         /*margin-right: -15px;*/
         /*margin-left: -15px;*/
     }
-    #main-card {
+    #main-card.home {
         background-color: #343a40;
         color: white;
         width: 125%;
