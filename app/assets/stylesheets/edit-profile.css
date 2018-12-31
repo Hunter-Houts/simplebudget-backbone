@@ -1,0 +1,44 @@
+body.editUser {
+    background: url("stockbgimage.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+}
+
+#main-card.editUser {
+
+    background-color: #343a40;
+    color: white;
+    width: 50%;
+    height: 25%;
+    margin: 5em auto 3em auto;
+    padding: 1em;
+
+}
+
+.btn.editUser {
+    background-color: white;
+    color: #343a40;
+}
+@media screen and (max-height: 415px){
+    #main-card.editUser{
+        width:100%;
+    }
+}
+@media screen and (max-width: 769px) and (max-height: 1025px){
+    #main-card.editUser{
+        width:100%;
+    }
+}
+@media screen and (max-width: 1025px) and (max-height: 769px){
+    #main-card.editUser{
+        width:100%;
+    }
+}
+@media screen and (max-width: 1025px) and (max-height: 1367px){
+    #main-card.editUser{
+        width:100%;
+    }
+}

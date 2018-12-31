@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<div class="card d-flex flex-nowrap" id="main-card">
+<div class="card d-flex flex-nowrap createAccount" id="main-card">
 <h1 class="d-flex flex-nowrap">Setup your Budget</h1>
 <h2 class="d-flex flex-nowrap">Budget Yourself!</h2>
 <br/>
@@ -15,7 +15,7 @@
                 <h5 th:text="'$' + ${#numbers.formatDecimal(bill.amount,1,2)}">{{#toFixed amount}}{{/toFixed}}</h5>
         </div>
         <div class="form-group col-sm-4 col-md-4">
-        <input class="btn" type="submit"  value="Remove"/>
+        <input class="btn createAccount" type="submit"  value="Remove"/>
         </div>
         </div>
     </form>
@@ -27,7 +27,7 @@
     <!--
         <div class="form-row">
             <div class="form-group col-sm-6 col-md-8">
-            <label for="savings">Enter your monthly savings</label>
+            <label class="createAccount" for="savings">Enter your monthly savings</label>
             </div>
             <div class="form-group col-sm-6 col-md-4">
             <input class="form-control" id="savings" name="savings" type="number"/>
@@ -37,7 +37,7 @@
         <h3 for="billname">Input your bills.. </h3>
         <div class="form-row">
             <div class="form-group col-sm-6 col-md-8">
-                <label for="billname">Enter the bill name here</label>
+                <label class="createAccount" for="billname">Enter the bill name here</label>
             </div>
             <div class="form-group col-sm-6 col-md-4">
             <input class="form-control" id="billname" name="billname"/>
@@ -45,20 +45,20 @@
         </div>
             <div class="form-row">
                 <div class="form-group col-sm-6 col-md-8">
-        <label for="billamount">Enter the bill amount here</label>
+        <label class="createAccount" for="billamount">Enter the bill amount here</label>
                 </div>
                 <div class="form-group col-sm-6 col-md-4">
                 <input class="form-control" id="billamount" name="billamount"/>
                 </div>
             </div>
         <br/>
-        <input class="btn" type="submit" formaction= "/addBill" formmethod="post" value="Add Bill"/>
+        <input class="btn createAccount" type="submit" formaction= "/addBill" formmethod="post" value="Add Bill"/>
     </form>
 </div>
 <form action="/account-setup" method="POST" id="createAccountForm">
     <div class="form-row">
         <div class="form-group col-sm-6 col-md-8">
-            <label for="monthlyincome">Enter Your Income Amount Each Paycheck</label>
+            <label class="createAccount" for="monthlyincome">Enter Your Income Amount Each Paycheck</label>
         </div>
         <div class="form-group col-sm-6 col-md-4">
         {{#ifEquals user.account.option 1}}
@@ -87,7 +87,7 @@
             {{#ifEquals user.account nil}}
                 <input th:if="${account == null}"  class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1"/>
             {{/ifEquals}}
-                <label class="form-check-label" for="exampleRadios1">
+                <label class="createAccount" class="form-check-label" for="exampleRadios1">
                     Weekly
                 </label>
             </div></li>
@@ -102,7 +102,7 @@
                 <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios2" value="2"/>
             {{/ifEquals}}
 
-                <label class="form-check-label" for="exampleRadios2">
+                <label class="createAccount" class="form-check-label" for="exampleRadios2">
                     Bi-weekly
                 </label>
             </div></li>
@@ -117,13 +117,13 @@
             {{#ifEquals user.account nil}}
                 <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="3"/>
             {{/ifEquals}}
-                <label class="form-check-label" for="exampleRadios3">
+                <label class="createAccount" class="form-check-label" for="exampleRadios3">
                     Monthly
                 </label>
             </div></li>
         </ul>
 <br/>
-    <input class="btn" value="Budget Yourself!!" type="submit" />
+    <input class="btn createAccount" value="Budget Yourself!!" type="submit" />
 </form>
 </div>
 </div>

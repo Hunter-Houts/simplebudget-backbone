@@ -1,18 +1,18 @@
 <div class="container-fluid">
-<div class="card d-flex flex-nowrap text-center w-100" id="main-card">
+<div class="card d-flex flex-nowrap text-center w-100 editPost" id="main-card">
 <form action='/posts/{{post.id}}/edit' method="post" id="editPost">
     <h2>Edit your Post</h2>
     <div class="form-group">
-    <label for="title">Title</label>
+    <label class="editPost" for="title">Title</label>
     <input class="form-control" id="title" pattern=".*\S+.*" title="title cannot be blank" value="{{post.title}}" required="required"/>
     </div>
     <br/>
     <div class="form-group">
-    <label for="body">Body</label>
-    <textarea class="form-control" rows="8" cols="100" id="body" pattern=".*\S+.*" title="body cannot be blank" required="required">{{post.body}}</textarea>
+    <label class="editPost" for="body">Body</label>
+    <textarea class="form-control editPost" rows="8" cols="100" id="body" pattern=".*\S+.*" title="body cannot be blank" required="required">{{post.body}}</textarea>
     </div>
-    <input class="btn" type="submit"/></form><br/><form action="/posts/{{post.id}}/delete" method="post" id="deletePost">
-        <input class="btn" type="submit" value="Delete"/>
+    <input class="btn editPost" type="submit"/></form><br/><form action="/posts/{{post.id}}/delete" method="post" id="deletePost">
+        <input class="btn editPost" type="submit" value="Delete"/>
 </form>
 </div>
 </div>

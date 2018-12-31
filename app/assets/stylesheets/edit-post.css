@@ -1,0 +1,29 @@
+body.editPost {
+    background: url("stockbgimage.jpg") no-repeat center;
+    background-size: cover;
+    height: 100%;
+}
+textarea.form-control.editPost {
+    height: 7em;
+}
+#main-card.editPost {
+    background-color: #343a40;
+    color: white;
+    width: 50%;
+    height: 25%;
+    margin: 5em auto 3em auto;
+    padding: 1em;
+
+}
+.btn.editPost {
+    background-color: white;
+    color: #343a40;
+}
+label.editPost{
+    font-size: 1.2rem;
+}
+@media screen and (min-width: 569px){
+    .w-100.editPost{
+        width: 50% !important;
+    }
+}

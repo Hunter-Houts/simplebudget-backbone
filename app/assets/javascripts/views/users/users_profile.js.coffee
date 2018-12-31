@@ -23,9 +23,6 @@ class Simplebudget.Views.Profile extends Backbone.View
 
 
   render: ->
-    # @account = new Simplebudget.Models.Account({id: @session.id})
-    # @collection.each (bill)-> @billtotal += Number(bill.get('amount'))
-    # console.log @billTotal
     $(@el).html(@template(user: @model.toJSON(), billTotal: @collection.billTotal()))
     this
 
