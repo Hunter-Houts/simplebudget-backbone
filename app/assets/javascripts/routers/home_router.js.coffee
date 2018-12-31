@@ -17,6 +17,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'account-setup': 'createAccount'
     'bills': 'createAccount'
     'users/:id': 'editProfilePage'
+    'piechart' : 'piechart'
     '*path' : 'notFound'
 
 
@@ -101,23 +102,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     $("body").removeClass("editUser")
     $("#container-main").html(view.render().el)
     setTimeout ( ->
-        # google.charts.load("visualization", "1,0", {'packages':['corechart']})
-        # google.charts.setOnLoadCallback(view.drawChart())
         view.drawChart()
-        # LoadGoogle: ->
-        #   if typeof google != 'undefined' && google && google.load
-
-        #     google.load('current', {'callback':view.drawChart(),'packages':['corechart']})
-
-        #   else
-
-        #     setTimeout(LoadGoogle(), 30);
-
-
-
-        #   @LoadGoogle()
-
-
         ), 50
 
   faq: ->
@@ -356,6 +341,28 @@ class Simplebudget.Routers.Home extends Backbone.Router
   notFound: (path) ->
     alert("Invalid Path: " + path)
     window.location.href = '/'
+
+  piechart: ->
+    view = new Simplebudget.Views.PieChart()
+    $("#createPost").hide()
+    $("footer").addClass("fixed-bottom")
+    $("body, html").removeClass("profile")
+    $("body, footer").removeClass("postShow")
+    $("body, html, footer").removeClass("reviewIndex")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("body, footer").removeClass("postIndex")
+    $("body").removeClass("editReview")
+    $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
+    $("#container-main").html(view.render().el)
+    setTimeout ( ->
+        view.drawChart()
+        ), 50
 
 
 

@@ -1,0 +1,9 @@
+<a href="/profile"><button class="w-100 btn text-center">Back to Profile</button></a>
+<h4 class="d-flex pl-2 flex-nowrap" style="display:none!important;" th:if="${billTotal > 0}" id="moneyAfterBills" th:text="'$' + ${#numbers.formatDecimal(moneyAfterBills,1,2)}">${{#subtract user.account.income billTotal}}{{/subtract}}</h4>
+{{#each user.bills}}
+  <p style="display:none;" class="billName text-capitalize" th:text="${bill.amount}">{{name}}</p>
+  <p style="display:none;" class="billAmount" th:text="${bill.name}">{{amount}}</p>
+{{/each}}
+<div id="piechartsize" style="min-width:800px" class="pchartclass pl-5 card w-100 h-100">
+<div id="piechart"></div>
+</div>
