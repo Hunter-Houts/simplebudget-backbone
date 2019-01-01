@@ -53,8 +53,8 @@
            <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
     </div>
-    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET" style=" padding-left: 12px" >
-        <input class="search-custom" type="search" name="search"/>
+    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="POST" id="searchForm" style=" padding-left: 12px" >
+        <input class="search-custom" id='search' type="search" name="search"/>
         <input class="search-custom btn" style="background-color: white;color: #343a40; padding: 2px 7px;" type="submit" value="Search Community!"/>    </form>
     </li>
     </div>

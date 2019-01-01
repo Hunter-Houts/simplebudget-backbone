@@ -18,6 +18,7 @@ class Simplebudget.Routers.Home extends Backbone.Router
     'bills': 'createAccount'
     'users/:id': 'editProfilePage'
     'piechart' : 'piechart'
+    'search' : 'search'
     '*path' : 'notFound'
 
 
@@ -364,6 +365,24 @@ class Simplebudget.Routers.Home extends Backbone.Router
         view.drawChart()
         ), 50
 
+  search: ->
+    view = new Simplebudget.Views.SearchIndex()
+    $("#createPost").show()
+    $("footer").addClass("fixed-bottom")
+    $("body, footer").addClass("postIndex")
+    $("body, html, footer").removeClass("reviewIndex")
+    $("body, footer").removeClass("postShow")
+    $("body, html").removeClass("login")
+    $("body, html").removeClass("signup")
+    $("body, html, footer").removeClass("faq")
+    $("body, html").removeClass("profile")
+    $("body, html, footer").removeClass("supincome")
+    $("body, html, footer").removeClass("team")
+    $("body").removeClass("editReview")
+    $("body").removeClass("createPost")
+    $("body").removeClass("createAccount")
+    $("body").removeClass("editUser")
+    $("#container-main").html(view.render().el)
 
 
 

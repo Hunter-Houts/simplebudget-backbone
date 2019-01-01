@@ -48,6 +48,8 @@ Rails.application.routes.draw do
   post 'reply/:comment_id/:post_id' => 'comments#reply'
   post 'reply/:id/:post_id/edit' => 'comments#update'
   post 'reply/:id/:post_id/delete' => 'comments#destroy'
+  get 'search' => 'posts#search'
+  post 'search' => 'posts#search'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
