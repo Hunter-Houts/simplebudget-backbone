@@ -23,7 +23,6 @@ class Simplebudget.Views.CreateReview extends Backbone.View
     event.preventDefault()
     rating = $('#rating').val()
     body = $('#body').val()
-    # user_id = $("#user_id").text()
     if @review.save({rating: rating, body: body}, wait: true, error: @handleError)
       window.location.href = '/reviews'
     else

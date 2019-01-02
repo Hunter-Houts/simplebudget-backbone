@@ -1,16 +1,14 @@
 class Simplebudget.Views.SearchIndex extends Backbone.View
-  template: HandlebarsTemplates['posts/index']
+  template: HandlebarsTemplates['posts/search']
 
   events:
     'submit #searchForm' : 'search'
 
   initialize: ->
-    @search = $("#searchForm")
-    @search.on('submit',@search, this)
-    @router = new Simplebudget.Routers.Home()
+    # @search = $("#searchForm")
+    # @search.on('submit',@search, this)
     @collection = new Simplebudget.Collections.Search()
     @collection.on('sync change', @render, this)
-    @collection.on('add', @render, this)
     @collection.fetch()
 
   render: ->

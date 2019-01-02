@@ -25,11 +25,16 @@ class ReviewsController < ApplicationController
   def create
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     if @current_user
-      @review = Review.create(params[:review].merge(user_id: session[:user_id]))
-      if @review.save
-        redirect_to(root_path)
+      @exsiting_review ||= Review.find_by_user_id(@current_user.id)
+      if @exsiting_review.nil?
+        @review = Review.create(params[:review].merge(user_id: session[:user_id]))
+        if @review.save
+          redirect_to(root_path)
+        else
+          redirect_to(reviews_path)
+        end
       else
-        redirect_to(reviews_path)
+        redirect_to '/reviews/' + @exsiting_review.id.to_s
       end
     end
   end
