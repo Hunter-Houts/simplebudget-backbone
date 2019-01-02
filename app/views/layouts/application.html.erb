@@ -30,7 +30,7 @@
         <a href="/signup" class="nav-item nav-link active" id="signup"><i class="fas fa-user-plus"></i> Sign Up</a>
         <a href="/login" class="nav-item nav-link active" id="login"><i class="fas fa-sign-in-alt"></i> Log in</a>
     </div>
-    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="POST" id="searchForm" style=" padding-left: 12px" >
+    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET" id="searchForm" style=" padding-left: 12px" >
         <input class="search-custom" id="search" type="search" name="search"/>
         <input class="search-custom btn" style="background-color: white;color: #343a40; padding: 2px 7px;" type="submit" value="Search Community!"/>    </form>
     </li>
@@ -53,9 +53,10 @@
            <button id="logoutBtn" type="submit" class="nav-item nav-link active navlink-custom btn btn-danger" style="background-color: transparent; border: none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </form>
     </div>
-    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="POST" id="searchForm" style=" padding-left: 12px" >
+    <li class="search-custom"><form class="search-custom" role="search" action="/search" method="GET" id="searchForm" style=" padding-left: 12px" >
         <input class="search-custom" id='search' type="search" name="search"/>
-        <input class="search-custom btn" style="background-color: white;color: #343a40; padding: 2px 7px;" type="submit" value="Search Community!"/>    </form>
+        <input class="search-custom btn" style="background-color: white;color: #343a40; padding: 2px 7px;" type="submit" value="Search Community!"/>   </form>
+        <a href="/search"></a>
     </li>
     </div>
 

@@ -2,7 +2,7 @@ class Simplebudget.Views.SearchIndex extends Backbone.View
   template: HandlebarsTemplates['posts/search']
 
   events:
-    'submit #searchForm' : 'search'
+    'click #searchBtn' : 'search'
 
   initialize: ->
     # @search = $("#searchForm")
@@ -20,6 +20,7 @@ class Simplebudget.Views.SearchIndex extends Backbone.View
     $("#posts").append(view.render().el)
 
   search: (event) ->
+    console.log "EVENT FIRED"
     event.preventDefault()
     search = $("#search").val()
     search2 = $("#search").val()

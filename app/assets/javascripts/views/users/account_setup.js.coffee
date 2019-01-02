@@ -3,12 +3,15 @@ class Simplebudget.Views.AccountSetup extends Backbone.View
 
   events:
     'submit #createAccountForm': 'createAccount'
-    'click #exampleRadios1': 'check1'
-    'click #exampleRadios2': 'check2'
-    'click #exampleRadios3': 'check3'
+    'click input[name=exampleRadios1]': 'check1'
+    'click input[name=exampleRadios2]': 'check2'
+    'click input[name=exampleRadios3]': 'check3'
     'submit #addBill': 'addBill'
 
   initialize: ->
+    $("input[name=exampleRadios1]").on("click",@check1)
+    $("input[name=exampleRadios2]").on("click",@check2)
+    $("input[name=exampleRadios3]").on("click",@check3)
     @router = new Simplebudget.Routers.Home()
     @session = new Simplebudget.Models.Session()
     @session.on('sync change', @render, this)
@@ -37,10 +40,10 @@ class Simplebudget.Views.AccountSetup extends Backbone.View
     if option1.is(':checked')
       if @account.save({income: monthlyIncome * 4, option: option1.val()}, wait: true, error: @handleError)
         window.location.href = '/profile'
-    else if option2.is(':checked')
+    if option2.is(':checked')
       if @account.save({income: monthlyIncome * 2, option: option2.val()}, wait: true, error: @handleError)
         window.location.href = '/profile'
-    else if option3.is(':checked')
+    if option3.is(':checked')
       if @account.save({income: monthlyIncome, option: option3.val()}, wait: true, error: @handleError)
         window.location.href = '/profile'
 
@@ -54,11 +57,11 @@ class Simplebudget.Views.AccountSetup extends Backbone.View
     $("#exampleRadios2").removeAttr('checked')
     $("#exampleRadios3").removeAttr('checked')
   check2: ->
-    $("#exampleRadios2").attr("checked","checked")
+    $("#exampleRadios2").attr('checked','checked')
     $("#exampleRadios3").removeAttr('checked')
     $("#exampleRadios1").removeAttr('checked')
   check3: ->
-    $("#exampleRadios3").attr("checked","checked")
+    $("#exampleRadios3").attr('checked','checked')
     $("#exampleRadios2").removeAttr('checked')
     $("#exampleRadios1").removeAttr('checked')
 

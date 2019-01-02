@@ -49,6 +49,9 @@ class PostsController < ApplicationController
   end
 
   def search
-    render :json => Post.includes(:user).where("title like ? or body like ?", "%#{params[:search]}%", "%#{params[:search]}%"), include: {user: {only: :username}}
+    url = request.referer
+    url_params = URI(url).query
+    parsed = Rack::Utils.parse_query url_params
+    render :json => Post.includes(:user).where("title like ? or body like ?", "%#{parsed['search']}%", "%#{parsed['search']}%"), include: {user: {only: :username}}
   end
 end
