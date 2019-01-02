@@ -17,11 +17,11 @@ class Simplebudget.Views.UsersSignup extends Backbone.View
     username = $('#username').val()
     email = $('#email').val()
     password = $('#password').val()
-    phonenumber = $('#phonenumber').val()
-    @user.save({username: username, email: email, password: password, phonenumber: phonenumber}, wait: true, error: @handleError, success: @router.navigate('/login', {trigger: true}))
-      # @router.navigate('/profile', {trigger: true})
-    # else
-      # @router.navigate('', {trigger: true})
+    confirm = $('#confirm').val()
+    if password == confirm
+      @user.save({username: username, email: email, password: password}, wait: true, error: @handleError, success: @router.navigate('/login', {trigger: true}))
+    else
+      alert "Password and confirm password must match!"
 
   handleError: (entry, response) ->
     if response.status == 422

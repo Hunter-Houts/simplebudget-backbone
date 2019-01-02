@@ -15,10 +15,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to(profile_path)
+    @exsists ||= User.find_by_username(user_params[:username])
+    if @exsists.nil?
+      @user = User.create(user_params)
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to(profile_path)
+      else
+        redirect_to(signup_path)
+      end
     else
       redirect_to(signup_path)
     end
@@ -37,19 +42,25 @@ class UsersController < ApplicationController
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @user = User.find(params[:id])
     if @current_user
-      if @user.id == @current_user.id
-        @user = User.update(params[:id],update_params)
-        if @user.update(update_params)
-        redirect_to(profile_path)
+      @exsists ||= User.find_by_username(update_params[:username])
+      if @exsists.nil?
+        if @user.id == @current_user.id
+         @user = User.update(params[:id],update_params)
+         if @user.update(update_params)
+          redirect_to(profile_path)
         else
           redirect_to(user_path)
+         end
+        else
+         redirect_to(login_path)
         end
       else
-        redirect_to(login_path)
+        redirect_to(profile_path)
       end
     else
       redirect_to(login_path)
     end
+
   end
 
   private
