@@ -70,3 +70,6 @@ gem 'responders'
 gem 'handlebars_assets'
 gem 'bootstrap'
 gem 'devise'
+
+#Rspec
+gem 'rspec-rails'
