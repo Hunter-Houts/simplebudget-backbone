@@ -84,9 +84,7 @@
             {{#notEquals user.account.option 1}}
                 <input th:if="${account != null &amp;&amp; account.option != 1}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1"/>
             {{/notEquals}}
-            {{#ifEquals user.account nil}}
-                <input th:if="${account == null}"  class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" value="1"/>
-            {{/ifEquals}}
+
                 <label class="createAccount" class="form-check-label" for="exampleRadios1">
                     Weekly
                 </label>
@@ -98,9 +96,7 @@
             {{#notEquals user.account.option 2}}
                 <input th:if="${account != null &amp;&amp; account.option != 2}" class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios2" value="2"/>
             {{/notEquals}}
-            {{#ifEquals user.account nil}}
-                <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios2" value="2"/>
-            {{/ifEquals}}
+
 
                 <label class="createAccount" class="form-check-label" for="exampleRadios2">
                     Bi-weekly
@@ -114,9 +110,7 @@
                 <input th:if="${account != null &amp;&amp; account.option != 3}" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="3"/>
             {{/notEquals}}
 
-            {{#ifEquals user.account nil}}
-                <input th:if="${account == null}" class="form-check-input" type="radio" name="exampleRadios3" id="exampleRadios3" value="3"/>
-            {{/ifEquals}}
+
                 <label class="createAccount" class="form-check-label" for="exampleRadios3">
                     Monthly
                 </label>
