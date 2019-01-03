@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @current_user = User.find(session[:user_id])
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
     if @current_user
       respond_with Post.create(params[:post].merge(user_id: session[:user_id]))
     else

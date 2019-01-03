@@ -10,7 +10,16 @@ module Simplebudget
   class Application < Rails::Application
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
-
+    config.generators do |g|
+      g.test_framework :rspec,
+      :fixtures => true,
+      :view_specs => false,
+      :helper_specs => false,
+      :routing_specs => false,
+      :controller_specs => true,
+      :request_specs => true
+    g.fixture_replacement :factory_bot, :dir => "spec/factories"
+  end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.middleware.insert_before Warden::Manager, Rack::Cors do
