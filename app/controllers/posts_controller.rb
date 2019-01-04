@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :current_user
+  # before_action :current_user
   respond_to :json
 
   def params
