@@ -61,4 +61,20 @@ RSpec.describe PostsController, :type => :controller do
     expect(response).to have_http_status(204) # Request processed successfully, no response body needed
     end
   end
+
+  describe "destroy" do
+    let(:params) do {
+      id: 1
+    }
+    end
+    before do
+      user_for_destory = create(:user, password:"destoryPost")
+      postDestory = FactoryBot.create(:post, :user_id => user_for_destory.id)
+      session[:user_id] = user_for_destory.id
+    end
+    it "destorys the post" do
+      post :destroy, params: params, format: :json
+      expect(response).to redirect_to(posts_path)
+    end
+  end
 end
