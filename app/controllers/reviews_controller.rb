@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @current_user = User.find(session[:user_id])
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @review = Review.find(params[:id])
     if @review.user.id == @current_user.id
       render :json => Review.find(params[:id])
@@ -40,7 +40,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @current_user = User.find(session[:user_id])
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @review = Review.find(params[:id])
     if @review.user.id == @current_user.id
       respond_with Review.update(params[:id], params[:review])
