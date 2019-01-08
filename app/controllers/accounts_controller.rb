@@ -6,14 +6,24 @@ class AccountsController < ApplicationController
     request.parameters
   end
   def index
-    render :json => Account.find_by_user_id(session[:user_id])
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_user
+      render :json => Account.find_by_user_id(session[:user_id])
+    else
+      redirect_to(root_path)
+    end
   end
 
   def new
   end
 
   def create
-    respond_with Account.create(params[:account].merge(user_id: session[:user_id]))
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_user
+      respond_with Account.create(params[:account].merge(user_id: session[:user_id]))
+    else
+      redirect_to(root_path)
+    end
   end
 
   def show
@@ -21,7 +31,13 @@ class AccountsController < ApplicationController
   end
 
   def update
-    respond_with Account.update(params[:id], params[:account])
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @account ||= Account.find(params[:id])
+    if @account.user.id == @current_user.id
+      respond_with Account.update(params[:id], params[:account])
+    else
+      redirect_to(root_path)
+    end
   end
 
 end

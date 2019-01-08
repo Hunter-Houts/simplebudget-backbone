@@ -12,7 +12,7 @@ RSpec.describe PostsController, :type => :controller do
 
     it "returns http success" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
   end
   #Not sure about this one
@@ -39,7 +39,7 @@ RSpec.describe PostsController, :type => :controller do
     it "grabs the specific post" do
       post = FactoryBot.create(:post)
       get :show, params: {:id => post.id}
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
   end
   describe "update" do

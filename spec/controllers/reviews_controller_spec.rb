@@ -4,7 +4,7 @@ require 'spec_helper'
 RSpec.describe ReviewsController, :type => :controller do
   describe "index" do
     it "returns success on get index" do
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
   end
 
@@ -16,7 +16,7 @@ RSpec.describe ReviewsController, :type => :controller do
     end
     it "Sucessfully grabs data if session user id and review user id match" do
       get :show, params: {id: 1}, format: :json
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
     it "redirects if session user id doesn't match review user id" do
       wrong_user = create(:user, password:"wrong")

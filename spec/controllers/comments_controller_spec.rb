@@ -12,7 +12,7 @@ RSpec.describe CommentsController do
     end
     it "returns success status" do
       get :index, params: {id: 2}, format: :json
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
   end
 
@@ -24,7 +24,7 @@ RSpec.describe CommentsController do
     end
     it "returns success status" do
       get :show, params: {id: 1}, format: :json
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
   end
   describe "create" do

@@ -3,6 +3,8 @@ class XHRConstraint
     !request.xhr? && !(request.url =~ /\.json$/ && ::Rails.env == 'development')
   end
 end
+# With this matcher all non-XHR requests are routed to MainController which returns an HTML page.
+# And XHR requests will be handled by other controllers which return JSON responses.
 Rails.application.routes.draw do
   get '*path' => 'main#index', :constraints => XHRConstraint.new #This is gold.
   resources :sessions

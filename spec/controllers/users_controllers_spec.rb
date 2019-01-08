@@ -9,7 +9,7 @@ RSpec.describe UsersController, :type => :controller do
     end
     it "returns logged in user profile" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe UsersController, :type => :controller do
     end
     it "gets user show/edit page if data belongs to that user" do
       get :show, params: {id: 1}, format: :json
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(200)
     end
   end
 
